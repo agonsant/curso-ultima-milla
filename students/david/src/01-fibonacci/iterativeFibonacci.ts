@@ -25,3 +25,13 @@ const iterativeFibonacci = (number:number):number | string => {
 };
 
 export default iterativeFibonacci;
+
+/**
+ * Complexity:
+ * -Function definition: 2
+ * -Initialize vars: 3
+ * -Ifs: 5*2 = 10
+ * -Loop: number * (for header(1+1+2)+ for body(2+2+2)) = 10*number
+ * -Return: 1
+ * TOTAL: 10*number + 16 ==> 10*n ==> O(n)
+ */

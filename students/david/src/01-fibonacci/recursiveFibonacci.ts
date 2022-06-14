@@ -29,3 +29,12 @@ const recursiveFibonacci = (
 };
 
 export default recursiveFibonacci;
+
+/**
+ * Complexity:
+ * -Function definition: 5
+ * -Ifs: 4*2 = 8
+ * -Recursivity: number * (header(1) + body(2+2+2+2) + return(5)) = 14*number
+ * -Return: 1
+ * TOTAL: 14*number + 14 ==> 14*n ==> O(n)
+ */
