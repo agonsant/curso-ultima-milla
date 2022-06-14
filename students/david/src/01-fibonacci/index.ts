@@ -3,7 +3,7 @@ import recursiveFibonacci from "./recursiveFibonacci";
 
 let numberOfIterations:number;
 
-numberOfIterations = 11;
+numberOfIterations = 1000;
 console.time('Iterative time');
 const showIterativeMethod: number | string = iterativeFibonacci(numberOfIterations);
 console.timeEnd('Iterative time');

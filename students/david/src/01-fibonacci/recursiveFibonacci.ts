@@ -6,24 +6,26 @@ const recursiveFibonacci = (
   recursiveCounter = 2
   ):number | string => {
   
-  if(number < 0) {
-    return ('Number must be positive or equal to zero');
-  };
-  if(!Number.isInteger(number)) {
-    return ('Number must be an integer');
-  };
-  if(number === 0) {
-    return 0;
-   };
-   if(number === 1 || number === 2) {
-    return 1;
-   };
+  if (recursiveCounter <= 2) {
+    if(number < 0) {
+      return ('Number must be positive or equal to zero');
+    };
+    if(!Number.isInteger(number)) {
+      return ('Number must be an integer');
+    };
+    if(number === 0) {
+      return 0;
+    };
+    if(number === 1 || number === 2) {
+      return 1;
+    };
+  }
   if (recursiveCounter < number) {
-  fibonacciNumber = lastFibonacciNumber + previousLastFibonacciNumber;
-  previousLastFibonacciNumber = lastFibonacciNumber;
-  lastFibonacciNumber = fibonacciNumber;
-  recursiveCounter += 1;
-  return recursiveFibonacci(number,fibonacciNumber,lastFibonacciNumber,previousLastFibonacciNumber,recursiveCounter);
+    fibonacciNumber = lastFibonacciNumber + previousLastFibonacciNumber;
+    previousLastFibonacciNumber = lastFibonacciNumber;
+    lastFibonacciNumber = fibonacciNumber;
+    recursiveCounter += 1;
+    return recursiveFibonacci(number,fibonacciNumber,lastFibonacciNumber,previousLastFibonacciNumber,recursiveCounter);
   }
   return fibonacciNumber;
 };
