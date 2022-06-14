@@ -1,9 +1,15 @@
 import iterativeFibonacci from "./iterativeFibonacci";
+import recursiveFibonacci from "./recursiveFibonacci";
 
 let numberOfIterations:number;
 
-numberOfIterations = 10;
+numberOfIterations = 11;
+console.time('Iterative time');
+const showIterativeMethod: number | string = iterativeFibonacci(numberOfIterations);
+console.timeEnd('Iterative time');
+console.time('Recursive time');
+const showRecursiveMethod: number | string = recursiveFibonacci(numberOfIterations);
+console.timeEnd('Recursive time');
 
-const showIterativeMethod:number | string = iterativeFibonacci(numberOfIterations);
-
-console.log(showIterativeMethod);
+console.log('Iterative: ',showIterativeMethod);
+console.log('Recursive: ',showRecursiveMethod);
