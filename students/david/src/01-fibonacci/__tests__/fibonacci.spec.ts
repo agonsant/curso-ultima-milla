@@ -27,9 +27,20 @@ describe('Given the function iterativeFibonacci', () => {
   });
 
   describe('When is called with a 0', () => {
-    it('Then it should return 1', () => {
+    it('Then it should return 0', () => {
       let fibonacciNumber:string | number;
       const enteredNumber = 0;
+
+      fibonacciNumber = iterativeFibonacci(enteredNumber);
+
+      assert.equal(fibonacciNumber,0);
+    });
+  });
+
+  describe('When is called with a 2', () => {
+    it('Then it should return 1', () => {
+      let fibonacciNumber:string | number;
+      const enteredNumber = 2;
 
       fibonacciNumber = iterativeFibonacci(enteredNumber);
 
@@ -37,21 +48,10 @@ describe('Given the function iterativeFibonacci', () => {
     });
   });
 
-  describe('When is called with a 2', () => {
-    it('Then it should return 2', () => {
-      let fibonacciNumber:string | number;
-      const enteredNumber = 2;
-
-      fibonacciNumber = iterativeFibonacci(enteredNumber);
-
-      assert.equal(fibonacciNumber,2);
-    });
-  });
-
-  describe('When is called with a 10', () => {
+  describe('When is called with a 11', () => {
     it('Then it should return 89', () => {
       let fibonacciNumber:string | number;
-      const enteredNumber = 10;
+      const enteredNumber = 11;
 
       fibonacciNumber = iterativeFibonacci(enteredNumber);
 
