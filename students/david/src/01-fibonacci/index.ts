@@ -1,5 +1,9 @@
-let fibonacciNumber:number;
+import iterativeFibonacci from "./iterativeFibonacci";
 
-fibonacciNumber = 5;
+let numberOfIterations:number;
 
-console.log(fibonacciNumber);
+numberOfIterations = 10;
+
+const showIterativeMethod:number = iterativeFibonacci(numberOfIterations);
+
+console.log(showIterativeMethod);
