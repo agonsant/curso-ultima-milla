@@ -5,19 +5,21 @@
   "main": "index.ts",
   "scripts": {
     "test": "jest",
-    "ts-compile": "tsc -w"
+    "ts-compile": "tsc -w",
+    "start": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "eslint-config-prettier": "^8.5.0",
     "jest": "^28.1.1",
     "typescript": "^4.7.3"
   },
   "devDependencies": {
+    "@types/jest": "^28.1.1",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0"
   }
