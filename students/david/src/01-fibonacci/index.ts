@@ -4,6 +4,6 @@ let numberOfIterations:number;
 
 numberOfIterations = 10;
 
-const showIterativeMethod:number = iterativeFibonacci(numberOfIterations);
+const showIterativeMethod:number | string = iterativeFibonacci(numberOfIterations);
 
 console.log(showIterativeMethod);

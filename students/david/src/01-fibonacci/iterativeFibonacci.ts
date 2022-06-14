@@ -1,13 +1,13 @@
-const iterativeFibonacci = (number:number):number => {
+const iterativeFibonacci = (number:number):number | string => {
   let fibonacciNumber:number;
   let previousLastFibonacciNumber = 2;
   let lastFibonacciNumber = 3;
   
   if(number < 0) {
-    console.error('Number must be positive or equal to zero');
+    return ('Number must be positive or equal to zero');
   };
   if(!Number.isInteger(number)) {
-    console.error('Number must be an integer');
+    return ('Number must be an integer');
   };
   if(number === 0) {
     return 1;
