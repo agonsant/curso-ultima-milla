@@ -1,3 +1,14 @@
+# Presentación 
+
+Laura Hernández - Full Stack Software Developer en Softonic - laura.hernandez@int.softonic.com
+
+Mi rol en Softonic es el de junior full stack developer en el equipo de Core. Las tecnologías que usamos son:
+
+`Frontend` : Javascript, marko.js \
+`Backend` : Node.js, hapi.js \
+`Testing` : Jest, Cypress \
+
+
 # Ejercicios Laura Hernandez
 
 ## 1- Complejidad algorítmica
