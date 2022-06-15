@@ -5,7 +5,8 @@ const recursiveFibonacci = (n: number) => {
 
   if (n < 0) {
     console.log("n must be a positive integer");
-    return;
+    fib = NaN;
+    return fib;
   } else {
     if (n === 0) {
       fib = 0;
