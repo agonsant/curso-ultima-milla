@@ -15,7 +15,6 @@ describe('Given the function recursiveFibonacci', () => {
       }
       catch (error){
         assert.equal(error.message, message);
-        console.log(error.message);
       }
     });
   });
@@ -31,7 +30,6 @@ describe('Given the function recursiveFibonacci', () => {
       }
       catch (error){
         assert.equal(error.message, message);
-        console.log(error.message);
       }
     });
   });
