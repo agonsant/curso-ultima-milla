@@ -1,11 +1,9 @@
 import iterativeFibonacci from "./iterativeFibonacci";
 import recursiveFibonacci from "./recursiveFibonacci";
 
-let numberOfIterations:number;
-let numberOfRecursive:number;
+const numberOfIterations = 1000;
+const numberOfRecursive = 30;
 
-numberOfIterations = 7000;
-numberOfRecursive = 42;
 console.time('Iterative time');
 const showIterativeMethod: bigint = iterativeFibonacci(numberOfIterations);
 console.timeEnd('Iterative time');

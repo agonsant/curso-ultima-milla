@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node dist/01-fibonacci/index.js",
     "start-dev": "nodemon dist/01-fibonacci/index.js",
-    "test": "mocha -r ts-node/register 'src/**/__tests__/**/*.spec.ts'",
-    "test-w": "mocha -w -r ts-node/register 'src/**/__tests__/**/*.spec.ts'",
+    "test": "mocha -r ts-node/register 'src/**/__tests__/*.spec.ts'",
+    "test-w": "mocha -w -r ts-node/register 'src/**/__tests__/*.spec.ts'",
     "build": "tsc",
     "build-w": "tsc --watch"
   },

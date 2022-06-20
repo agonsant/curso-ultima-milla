@@ -1,3 +1,9 @@
+/**
+ * A function for given a number it return its fibonacci number using a recursive method
+ * @param number: Number The input value.
+ * @returns {bigint}: The fibonnaci number of the input value
+ */
+
 const recursiveFibonacci = (number:number):bigint => {
     if(number < 0) {
       throw new Error ('Number must be positive or equal to zero');
@@ -18,5 +24,5 @@ export default recursiveFibonacci;
 
 /**
  * Complexity:
- * TOTAL: ==> O(X^n)
+ * TOTAL: ==> O(2^n)
  */

@@ -1,3 +1,9 @@
+/**
+ * A function for given a number it return its fibonacci number using an iterative method
+ * @param number: Number The input value.
+ * @returns {bigint}: The fibonnaci number of the input value
+ */
+
 const iterativeFibonacci = (number:number):bigint => {
   let fibonacciNumber:bigint;
   let previousLastFibonacciNumber = BigInt(1);
