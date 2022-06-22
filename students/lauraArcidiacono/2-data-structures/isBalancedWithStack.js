@@ -47,7 +47,7 @@ class Stack {
     isBalancedStack(expresion){
       this.dataStack = []
       const arrayExpresion = this.transformToArray(expresion);
-      if(arrayExpresion.length / 2 !== 0) return false;
+      if(arrayExpresion.length % 2 !== 0) return false;
       arrayExpresion.forEach(item => {
         const lastItem = this.getLastElement()
         this.dataStack.push(item);
