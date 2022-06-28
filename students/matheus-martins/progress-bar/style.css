@@ -2,7 +2,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
-.progress-bar-front {
+#progress-bar-front {
     margin: 10px 0;
     height: 20px;
     width: 200px;
@@ -10,6 +10,8 @@ body {
     background-color: whitesmoke;
 }
 
-.progress-bar-back {
+#progress-bar-back {
     background-color: yellow;
+    height: 20px;
+    width: 0px;
 }

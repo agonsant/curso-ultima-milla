@@ -1,13 +1,17 @@
 /* eslint-disable no-undef */
-const { fromEvent, from, scan } = rxjs;
+const { fromEvent, map, interval, take, concatAll } = rxjs;
 
-const progress$ = from([20, 40, 60, 80, 100]);
+const progressBar = document.getElementById('progress-bar-back');
 
-const increaseProgress = () => {
-    progress$.pipe(
-        scan((total) => total + 1, 0),
-    ).subscribe(console.log);
-    console.log('Clicked!');
+const updateProgress = progressRatio => {
+    console.log("progress:", progressRatio);
+    progressBar.style.width += `${progressRatio}%`;
 }
 
-fromEvent(document.querySelector("button"), 'click').subscribe(() => increaseProgress());
+const clicks = fromEvent(document.querySelector('button'), 'click');
+
+const higherOrder = clicks.pipe(
+  map(() => interval(10).pipe(take(100)))
+);
+const firstOrder = higherOrder.pipe(concatAll());
+firstOrder.subscribe(x => updateProgress(x));
