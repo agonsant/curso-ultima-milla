@@ -3,7 +3,7 @@ const { join } = require('path');
 module.exports = {
     mode: 'development',
     watch: true,
-    entry: '.src/index.ts',
+    entry: './src/index.ts',
     module: {
       rules: [
         {
@@ -19,7 +19,7 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     // devServer: {
-    //   contentBase: './dist',
+    //   contentBase: './dist/src',
     //   port: 4200,
     // }
 }
