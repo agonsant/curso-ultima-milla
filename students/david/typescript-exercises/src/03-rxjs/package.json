@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "webpack serve --open",
+    "build": "webpack",
     "build-webpack": "webpack --watch"
   },
   "author": "",

@@ -1,5 +1,4 @@
 const path = require('path');
-//import path from 'path';
 
 module.exports = {
   mode: 'production',
@@ -14,13 +13,13 @@ module.exports = {
     ],
   },
   devServer: {
-    static: './dist',
+    static: './public',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'dist/main.js',
+    path: path.resolve(__dirname, 'public'),
   },
 };
