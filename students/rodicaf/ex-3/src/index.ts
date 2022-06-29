@@ -12,13 +12,14 @@ items$
   )
   .subscribe( val => console.log(val) );
 
-// const progressBar = document.querySelector(".progress-bar");  
-// const loadButton = document.querySelector(".load-data")!;
-// const data = document.querySelector(".data");
+const progressBar = document.querySelector(".progress-bar");  
+const loadButton = document.querySelector(".load-data")!;
+const data = document.querySelector(".data");
 
 // compute percentage completion
 
-// const click$ = fromEvent(loadButton, 'click');
+
+const click$ = fromEvent(loadButton, 'click');
 
 console.log('Hello world');
 
