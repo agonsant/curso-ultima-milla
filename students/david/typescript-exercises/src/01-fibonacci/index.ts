@@ -1,5 +1,5 @@
-import iterativeFibonacci from "./iterativeFibonacci";
-import recursiveFibonacci from "./recursiveFibonacci";
+import iterativeFibonacci from "./iterativeFibonacci.js";
+import recursiveFibonacci from "./recursiveFibonacci.js";
 
 const numberOfIterations = 1000;
 const numberOfRecursive = 30;
