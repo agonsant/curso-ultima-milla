@@ -8,7 +8,7 @@ const changeProgress = (progress:number) => {
   return progress;
 }
 
-const button = document.getElementById('button');
+const button = document.getElementById('button') as HTMLButtonElement;
 const click$ = fromEvent<MouseEvent>(button, 'click');
 click$.subscribe(click => {
   const chargeBar$ = of(chargeValue);
