@@ -1,0 +1,26 @@
+.progress-bar {
+    width: 500px;
+    height: 30px;
+    background-color: rgb(196, 231, 255);
+    border: purple 4px double;
+    border-radius: 5px;
+}
+
+.start-button {
+    cursor: pointer;
+    margin: 15px;
+    padding: 5px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 18px;
+    font-weight: 900;
+    border: purple 4px double;
+    border-radius: 5px;
+    background-color: #acf1d7;}
+
+body, main {
+    font-family: "Courier New", Courier, monospace;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
