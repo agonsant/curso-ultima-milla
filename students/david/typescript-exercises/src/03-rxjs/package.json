@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "webpack serve --open",
+    "start": "webpack serve --port 4040 --open",
     "build": "webpack",
     "build-webpack": "webpack --watch"
   },
