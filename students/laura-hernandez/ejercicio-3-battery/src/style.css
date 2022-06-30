@@ -9,10 +9,20 @@
   align-items: center;
 }
 
+/* .battery::after {
+  content: "";  
+  width: 20px;
+  height: 40px;
+  position: absolute;
+  background-color: blue;
+} */
+
 .cell {
   width: 24%;
   height: 98%;
-  background-color: #acf1d7;}
+  background-color: #acf1d7;
+  margin: black solid 1px;
+}
 
 body, main {
   font-family: "Courier New", Courier, monospace;
