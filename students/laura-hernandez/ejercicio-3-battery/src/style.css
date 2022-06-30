@@ -2,26 +2,30 @@
   width: 300px;
   height: 120px;
   background-color: white;
-  border: purple 4px double;
+  border: grey 4px solid;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 3px;
 }
-
-/* .battery::after {
-  content: "";  
-  width: 20px;
-  height: 40px;
-  position: absolute;
-  background-color: blue;
-} */
 
 .cell {
   width: 24%;
   height: 98%;
   background-color: #acf1d7;
   margin: black solid 1px;
+}
+
+.right-div {
+  width: 15px;
+  height: 30px;
+  background-color: grey;
+}
+
+.battery-container {
+  display: flex;
+  align-items: center;
 }
 
 body, main {
