@@ -1,7 +1,7 @@
 export interface BatteryType {
     charging: boolean;
-    chargingTime: number;
-    dischargingTime: number;
+    chargingTime: function;
+    dischargingTime: function;
     level: number;
     onchargingchange: number | null;
     onchargingtimechange: number | null;
