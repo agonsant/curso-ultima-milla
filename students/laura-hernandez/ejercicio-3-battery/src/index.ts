@@ -1,4 +1,11 @@
 import { fromEvent, interval, of , from} from 'rxjs';
+import { BatteryType } from './types';
+
+declare global {
+  interface Navigator {
+      getBattery: () => Promise<BatteryType>;
+  }
+}
 
 const cellsIds = from(["cell-1", "cell-2", "cell-3", "cell-4" ]);
 
@@ -15,34 +22,22 @@ navigator.getBattery().then(battery => {
     updateDischargingInfo();
   }
   updateAllBatteryInfo();
-
-  battery.addEventListener('chargingchange', () => {
-    updateChargeInfo();
-  });
+  
   function updateChargeInfo(){
     console.log("Battery charging? "
                 + (battery.charging ? "Yes" : "No"));
   }
-
-  battery.addEventListener('levelchange', () => {
-    updateLevelInfo();
-  });
+  
   function updateLevelInfo(){
     console.log("Battery level: "
                 + battery.level * 100 + "%");
   }
 
-  battery.addEventListener('chargingtimechange', () => {
-    updateChargingInfo();
-  });
   function updateChargingInfo(){
     console.log("Battery charging time: "
                  + battery.chargingTime + " seconds");
   }
 
-  battery.addEventListener('dischargingtimechange', () => {
-    updateDischargingInfo();
-  });
   function updateDischargingInfo(){
     console.log("Battery discharging time: "
                  + battery.dischargingTime + " seconds");
