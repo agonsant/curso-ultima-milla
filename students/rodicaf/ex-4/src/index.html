@@ -3,9 +3,48 @@
   <head>
     <meta charset="UTF-8">
     <title>Webpack App</title>
+    <style>
+      body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .battery-container {
+        width: 200px;
+        height: 350px;
+        border: 1px solid black;
+        border-radius: 20px;
+      }
+
+      .battery-info {
+        background-color: green;
+      }
+
+      .message {
+        color: gray;
+        align-self: center;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .green {
+        background-color: green;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hola</h1>
+    <h1>Battery Charger Application</h1>
+    <div class="battery-container">
+      <div class="battery-info"></div>
+      <div class="details">
+        <div class="level"></div>
+        <div class="message"></div>
+      </div>
+    </div>
   <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
