@@ -1,0 +1,47 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  padding-top: 30px;
+}
+
+.progress-container {
+    width: 500px;
+    height: 30px;
+    align-self: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid red;
+    background-color: white;
+}
+
+.progress-bar {
+  height: 30px;
+  border-radius: 10px;
+  background-color: greenyellow;
+}
+
+.load-data {
+    width:30%;
+    height: 30px;
+    align-self: center;
+    border-radius: 10px;
+}
+
+.load-data:hover{
+  cursor: pointer;
+  color:grey;
+  background-color: burlywood;
+}
+
+.finished {
+  width: 500px;
+  background-color: aquamarine;
+}
+
+.data {
+  margin-top: 20px;
+  font-weight: bold;
+  align-self: center;
+}

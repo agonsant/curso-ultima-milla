@@ -11,9 +11,7 @@
     "forceConsistentCasingInFileNames": true,            
     "strict": true,                                      
     "skipLibCheck": true,
-    "removeComments": true,
-    "importHelpers": true,
-    "isolatedModules": true,   
+    "importHelpers": true,   
     "allowUmdGlobalAccess": true,                                    
   },
   "include": ["src"]
