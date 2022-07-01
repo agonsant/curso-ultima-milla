@@ -1,0 +1,46 @@
+body, main {
+  font-family: "Courier New", Courier, monospace;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.battery {
+  width: 300px;
+  height: 120px;
+  background-color: white;
+  border: grey 4px solid;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px;
+}
+
+.cell {
+  width: 24%;
+  height: 98%;
+  background-color: #50eb47;
+  margin:  2px;
+  border: grey solid 1px;
+}
+
+.right-div {
+  width: 15px;
+  height: 30px;
+  background-color: grey;
+}
+
+.battery-container {
+  display: flex;
+  align-items: center;
+  padding: 130px 60px;
+  border: solid black 1px;
+  background-color: white;
+}
+
+.info-text {
+  font-size: 30px;
+  padding: 5px;
+}
