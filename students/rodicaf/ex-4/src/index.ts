@@ -20,28 +20,40 @@ declare global {
 
 const batteryCharger = document.querySelector(".battery-info") as HTMLDivElement;
 const message = document.querySelector(".message") as HTMLDivElement;
-const levelHTML = document.querySelector("level") as HTMLDivElement;
-const getLevel = (data) => {
-  levelHTML.innerHTML = data;
-};
-const getMessage = (data) => {
-  message.innerHTML = data;
-};
+const level = document.querySelector("level") as HTMLDivElement;
 
-(()=>{
-  const batteryStatus$: Observable<BatteryType> = from(navigator.getBattery()); 
-  batteryStatus$.subscribe(
-    battery => { 
-      console.log("Battery status: ", battery.level);
-    //   getLevel(battery.level); 
-      if (battery.level < 0.1) {
-        batteryCharger.classList.add("red");
-        getMessage("Low Battery"); 
-      } else {
-        batteryCharger.classList.add("green");
-        getMessage("Battery Charging");
+export class BatteryStatus {
+  batteryStatus$: Observable<BatteryType> = from(navigator.getBattery()); 
+  
+  constructor () {}
+  
+  // check battery status
+  checkBatteryLevel() {
+    this.batteryStatus$.subscribe(
+      battery => { 
+        console.log("Battery status: ", battery.level);
+        console.log("Battery status: ", battery.charging); 
+        // level.innerHTML = `${battery.level}%`;
+        if (battery.level < 0.1) {
+          batteryCharger.classList.add("red");
+          message.innerText = "Low Battery";
+        } else {
+          batteryCharger.classList.add("green");
+          message.innerText = "Battery Charging";
+        }
       }
-    })  
-})();
+    )
+  }
+  
+  isCharging() {
+    this.batteryStatus$.subscribe(
+      battery => { 
+        console.log("Battery status: ", battery.charging);
+      }
+    )  
+  }
+} 
 
 
+const myBattery = new BatteryStatus();
+myBattery.checkBatteryLevel();
