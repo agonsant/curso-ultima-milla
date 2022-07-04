@@ -1,17 +1,70 @@
-*{
+* {
   box-sizing: border-box;
   font-family: "Source Sans Pro", sans-serif;
 }
-body{
+
+body {
   padding: 0;
   margin: 0;
   background-color: #333;
 }
-.main-container{
+
+.main-container {
   display:flex;
   flex-direction: column;
   align-items: center;
 }
-.main-title{
-  color:#18A;
+
+.main-title {
+  color:#DDD;
+}
+
+.battery-flex {
+  display:flex;
+  align-items: center;
+}
+
+.battery-container {
+  width: 202px;
+  height: 80px;
+  border: solid 3px #DDD;
+  padding: 3px;
+  display: flex;
+}
+
+.battery-head {
+  width: 15px;
+  height: 25px;
+  background-color: #DDD;
+}
+
+.battery-indicator1 {
+  height: 100%;
+  background-color: #F44;
+  margin: 0 3px;
+  width: 32px;
+}
+.battery-indicator2 {
+  height: 100%;
+  background-color: #F92;
+  margin: 0 3px;
+  width: 32px;
+}
+.battery-indicator3 {
+  height: 100%;
+  background-color: #DD2;
+  margin: 0 3px;
+  width: 32px;
+}
+.battery-indicator4 {
+  height: 100%;
+  background-color: #1A4;
+  margin: 0 3px;
+  width: 32px;
+}
+.battery-indicator5 {
+  height: 100%;
+  background-color: #1D6;
+  margin: 0 3px;
+  width: 32px;
 }
