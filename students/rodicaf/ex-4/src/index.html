@@ -26,10 +26,18 @@
         border-top-right-radius: 20px;
       }
 
-      .batter-info__icon {
+      .battery-info__icon {
         position:absolute;
         right:0;
         bottom:0;
+      }
+
+      .battery-info__details {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
       }
 
       .message {
@@ -44,22 +52,34 @@
       .green {
         background-color: green;
       }
+
+      .battery-charging{
+        margin-top: 100px;
+        width: 300px;
+        height: 40px;
+        border: 1px solid black;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+      }
     </style>
   </head>
   <body>
     <h1>Battery Charger Application</h1>
     <div class="battery">
      <!-- battery level info --> 
-      <div class="battery-info">
+      <section class="battery-info">
         <div class="battery-info__image">
           <img class="battery-info__icon" src="https://i.imgur.com/xy0IMAM.png" width=50 height=50 />
         </div>
         <div class="battery-info__details">
-          <div class="level"></div>
+          <div class="levelDiv"></div>
           <div class="message"></div>
         </div>
-      </div>
+      </section>
       <!-- charging bar --> 
+      <section class="battery-charging">
+        <div class="battery-charging__progress"></div>
+      </section>
     </div>
   <script type="text/javascript" src="main.js"></script>
   </body>

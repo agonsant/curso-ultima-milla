@@ -1,8 +1,8 @@
 export type BatteryManagerInfo = {
-    charging: Readonly<boolean>;
-    chargingTime: Readonly<number>;
-    dischargingTime: Readonly<number>;
-    level: Readonly<number>;
+    readonly charging: boolean;
+    readonly chargingTime: number;
+    readonly dischargingTime: number;
+    readonly level: number;
 }
 
 export type BatteryManager = BatteryManagerInfo & {
