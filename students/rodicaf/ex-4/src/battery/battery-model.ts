@@ -5,6 +5,8 @@ export type BatteryManagerInfo = {
     readonly level: number;
 }
 
+// intersection types (combines the object properties, 
+// it is more an union than an intersection operation)
 export type BatteryManager = BatteryManagerInfo & {
     onchargingchange: (b: Event) => void;
     onchargingtimechange: (b: Event) => void;

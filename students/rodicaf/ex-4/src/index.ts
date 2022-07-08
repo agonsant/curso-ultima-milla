@@ -7,4 +7,7 @@ import { IDrawer } from './drawer/drawer.model';
 const myBattery= new BatteryListener();
 const htmlDrawer: IDrawer = new HTMLDrawer();
 
-myBattery.getObservable().subscribe(b => htmlDrawer.drawBattery(b));
+myBattery.getObservable().subscribe(b => {
+    htmlDrawer.drawBattery(b);
+    htmlDrawer.updateProgress(b);
+});
