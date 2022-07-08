@@ -15,7 +15,7 @@ export class HTMLDrawer implements IDrawer {
     const message = document.querySelector(".message") as HTMLParagraphElement;
     const level = document.querySelector(".level") as HTMLParagraphElement;
 
-    level.textContent = `${b.level}%`;
+    level.textContent = `${b.level*100}%`;
     if (b.level > 0.2) {
       message.innerText = 'Battery charging';
       batteryCharger.classList.add('green');
