@@ -8,14 +8,13 @@ import NotFoundPage from './pages/NotFoundPage';
 
 
 function App() {
-  const language = "English";
-  
+
   return (
     <BrowserRouter>
       <Header />
         <Routes>
           <Route path="/" element={ <HomePage/> }/>
-          <Route path="/arena" element={ <ArenaPage language={language}/> }/>
+          <Route path="/arena" element={ <ArenaPage /> }/>
           <Route path="/ranking" element={ <RankingPage/> }/>
           <Route path="/*" element={<NotFoundPage/>}/>
         </Routes>
