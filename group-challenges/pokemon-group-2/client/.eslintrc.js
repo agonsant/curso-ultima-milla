@@ -19,6 +19,9 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
   ],
   rules: {
     "no-plusplus": "off",
