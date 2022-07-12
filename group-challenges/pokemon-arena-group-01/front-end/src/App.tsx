@@ -15,7 +15,6 @@ function App() {
           <Route path="/arena" element={ <ArenaPage/> }/>
           <Route path="/ranking" element={ <RankingPage/> }/>
         </Routes>
-
       <Footer />
     </BrowserRouter> 
   );

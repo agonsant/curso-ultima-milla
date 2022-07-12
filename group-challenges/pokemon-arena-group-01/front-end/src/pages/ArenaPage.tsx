@@ -1,7 +1,7 @@
 const ArenaPage = () => {
     return (
         <>
-        <h1>Arena Page</h1>
+        <h1>Arena Page!!!</h1>
         </>
     )
 };
