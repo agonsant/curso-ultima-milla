@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peerjs Demo</title>
+    <script src="https://unpkg.com/peerjs@1.4.5/dist/peerjs.min.js"></script>
+    <style>
+        video {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+        }
+        .peers__container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <video id="MY_CAM"></video>
+    <section class="peers__container">
+
+    </section>
+
+    <form>
+        <input type="text" name="peerId">
+        <button type="submit">Llamar</button>
+    </form>
+    
+    <script>
+
+      async function getMyCam(){
+         // Obtener el media de video y audio
+         const mediaConstrains = {
+          audio: false, // poner a true para obtener el audio
+          video: true,
+        };
+        return await navigator.mediaDevices.getUserMedia(mediaConstrains);
+      }
+
+      function renderStream(idHTML, stream){
+        // este objeto lo deposito en un video de HTML
+        const video = document.getElementById(idHTML);
+        video.srcObject = stream;
+        video.onloadedmetadata = () => video.play();
+      }
+
+      function renderPeer(stream){
+        const video = document.createElement('video');
+        video.srcObject = stream;
+        video.onloadedmetadata = () => video.play();
+        document.querySelector('.peers__container').appendChild(video);
+      }
+
+      async function getMyCamAndRender() {
+        const stream = await getMyCam();
+        renderStream('MY_CAM', stream);
+        return stream;
+      }
+
+      const peer = new Peer(); // creamos el objeto para conectar con nuestro peer
+
+      // escucho el evento de llamada
+      peer.on('call', async (call) => {
+        const stream = await getMyCamAndRender(); // obtiene mi cam y lo pinta
+        call.answer(stream); // respondo a la llamada con ese stream
+        call.on('stream', renderPeer); // pinto la cámara del que llamó
+      });
+
+
+      // en este caso llamo a través de un formulario
+      document.querySelector('form').addEventListener('submit', async e => {
+        // submit del form
+        e.preventDefault(); // evitamos el comportamiento por defecto
+        const peerId = e.target.peerId.value;
+        const stream = await getMyCamAndRender(); // obtiene mi cam y lo pinta
+        const call = peer.call(peerId, stream);
+        call.on('stream', renderPeer); // pinto la cámara del que llamó
+      });
+    </script>
+  </body>
+</html>
