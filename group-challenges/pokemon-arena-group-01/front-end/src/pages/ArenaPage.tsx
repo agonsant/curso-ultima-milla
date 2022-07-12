@@ -2,14 +2,19 @@ import React from "react";
 
 import { UserContext } from '../store/context/userContext';
 
-const ArenaPage: React.FC = () => {
-  const userData = React.useContext(UserContext);
+const ArenaPage: React.FC = (): JSX.Element => {
+//   const arenaUserData = React.useContext(UserContext);
   return (
-    <>
-      <h1> Arena Page </h1>
-      <p> Player's name: {userData?.name} </p>
-      <p> Game language: {userData?.language} </p>
-    </>
+    <UserContext.Consumer>
+      { appContext => appContext && (
+          <div>
+            <h1> Arena Page </h1>
+            <p> Player's name: {appContext.name} </p>
+            <p> Game language: {appContext.language} </p>
+          </div>
+        )
+      }
+    </UserContext.Consumer>
   )
 };
 

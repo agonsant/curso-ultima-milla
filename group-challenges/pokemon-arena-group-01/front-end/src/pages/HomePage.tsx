@@ -14,25 +14,25 @@ const HomePage: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | any>) => {
-    setFormData(event.currentTarget.id);  
-    console.log(formData);
+    setFormData( event.target.value );  
   }; 
 
-  const startGameHandler = (event: React.FormEvent) => {
+  const onSubmitData = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
+      console.log("formData", formData);
       navigate(`/arena`);
   };
     
   return (
     <UserContext.Provider value={formData}>
       <div className="home-page">
-        <h1 className="home-page__title"> Home Page </h1>
-        <form className="home-page__form" onSubmit={startGameHandler}>
+        <h1 className="home-page__title"> Welcome to the Pokemon Game </h1>
+        <form className="home-page__form" onSubmit={onSubmitData}>
             <div className="home-page__user home-page__item"> 
             <input 
                 type="text" 
                 id="name"
-                className="home-page__name"
+                autoComplete="off"
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Enter your name"
@@ -42,6 +42,7 @@ const HomePage: React.FC = (): JSX.Element => {
             <input 
                 type="text"
                 id="language"
+                autoComplete="off"
                 value={formData.language}
                 onChange={handleChange}
                 placeholder="Enter language"
