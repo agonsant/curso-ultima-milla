@@ -3,6 +3,11 @@
   flex-direction: column;
 }
 
+.home-page__item {
+  margin: 15px;
+  size: 40px;
+}
+
 .home-page__languages {
   display:flex;  
 }
