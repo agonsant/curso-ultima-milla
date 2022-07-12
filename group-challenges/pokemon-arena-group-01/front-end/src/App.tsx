@@ -7,12 +7,14 @@ import RankingPage from './pages/RankingPage';
 
 
 function App() {
+  const language = "English";
+  
   return (
     <BrowserRouter>
       <Header />
         <Routes>
           <Route path="/" element={ <HomePage/> }/>
-          <Route path="/arena" element={ <ArenaPage/> }/>
+          <Route path="/arena" element={ <ArenaPage language={language}/> }/>
           <Route path="/ranking" element={ <RankingPage/> }/>
         </Routes>
       <Footer />
