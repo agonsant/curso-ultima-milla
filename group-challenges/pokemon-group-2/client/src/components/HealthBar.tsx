@@ -1,6 +1,16 @@
 import styled from "styled-components";
 
-const HealthBar = () => {
+interface IHealthBarProps {
+  maxValue: number;
+  minValue: number;
+  isEmpty: boolean;
+}
+
+const HealthBar: React.FC<IHealthBarProps> = ({
+  maxValue,
+  minValue,
+  isEmpty,
+}) => {
   return (
     <>
       <Health>HP</Health>
