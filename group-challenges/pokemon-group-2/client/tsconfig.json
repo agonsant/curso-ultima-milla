@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2021",
     "lib": [
       "dom",
       "dom.iterable",
@@ -20,6 +20,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "/*.ts", "/*.tsx", "jest.config.js"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
