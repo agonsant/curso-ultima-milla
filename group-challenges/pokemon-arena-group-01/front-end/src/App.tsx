@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ArenaPage from './pages/ArenaPage';
 import RankingPage from './pages/RankingPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={ <HomePage/> }/>
           <Route path="/arena" element={ <ArenaPage language={language}/> }/>
           <Route path="/ranking" element={ <RankingPage/> }/>
+          <Route path="/*" element={<NotFoundPage/>}/>
         </Routes>
       <Footer />
     </BrowserRouter> 
