@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import { useNavigate } from "react-router";
 import { ThemeContext } from '../store/context/ThemeContext';
 
@@ -8,7 +8,6 @@ import "./HomePage.scss";
 const HomePage: React.FC = (): JSX.Element => { 
 
   const {isNightModeOn} = useContext(ThemeContext);
-  const [userData, setUserData] = useState<{name: string, language: string}|null>(null);
   const { setUser } = useContext(UserContext);
 
   const navigate = useNavigate();
@@ -31,7 +30,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 id="name"
                 name="userName"
                 autoComplete="off"
-                placeholder="Enter your name"
+                placeholder="Enter username"
             />
             </div>  
             <div className="home-page__languages home-page__item">
