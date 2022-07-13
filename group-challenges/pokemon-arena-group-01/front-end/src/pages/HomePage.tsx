@@ -5,7 +5,7 @@ import { ThemeContext } from '../store/context/ThemeContext';
 import { UserContext } from '../store/context/userContext';
 import "./HomePage.scss";
 
-const HomePage: React.FC = (): JSX.Element => { 
+const HomePage: React.FC = (): JSX.Element => {
 
   const {isNightModeOn} = useContext(ThemeContext);
   const [userData, setUserData] = useState<{name: string, language: string}|null>(null);
@@ -18,30 +18,30 @@ const HomePage: React.FC = (): JSX.Element => {
       const form = event.target as HTMLFormElement;
       const user = { name: form.userName.value, language: form.language.value}
       setUser(user);
-      navigate(`/arena`);
+      navigate(`/useroponent`);
   };
-    
+
   return (
-      <div className={`"home-page" ${isNightModeOn ? "background-night" : "background-light"}`}>
+      <div className={`home-page ${isNightModeOn ? "background-night" : "background-light"}`}>
         <h1 className="home-page__title"> Welcome to the Pokemon Game </h1>
         <form className="home-page__form" onSubmit={onSubmitData}>
-            <div className="home-page__user home-page__item"> 
-            <input 
-                type="text" 
+            <div className="home-page__user home-page__item">
+            <input
+                type="text"
                 id="name"
                 name="userName"
                 autoComplete="off"
                 placeholder="Enter your name"
             />
-            </div>  
+            </div>
             <div className="home-page__languages home-page__item">
-            <input 
+            <input
                 type="text"
                 id="language"
                 name="language"
                 autoComplete="off"
                 placeholder="Enter language"
-            /> 
+            />
             </div>
             <div className="home-page__item">
               <button type="submit" > Start the game  </button>
