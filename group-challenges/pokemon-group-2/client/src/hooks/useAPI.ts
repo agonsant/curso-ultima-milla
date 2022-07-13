@@ -9,6 +9,12 @@ const useAPI = () => {
     return pokemonData;
   }
 
+  const getPokemonName = async (id:string) => {
+    const response = await (getPokemonData(id));
+    const pokemonName = response.name;
+    return pokemonName;
+  }
+  
   const getPokemonImage = async (id:string) => {
     const response = await (getPokemonData(id));
     const pokemonImageUrl = response.sprites.other.dream_world.front_default;
@@ -17,6 +23,7 @@ const useAPI = () => {
 
   return { 
     getPokemonImage, 
+    getPokemonName,
     getPokemonData
   }
 }
