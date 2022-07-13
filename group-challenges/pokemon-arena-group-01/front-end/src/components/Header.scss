@@ -9,9 +9,16 @@
   align-items: center;
 }
 
+.invisible-link{
+   text-decoration: none;
+}
+
 .header-title{
   text-align: center;
   color: $text-color;
+  &:hover{
+    cursor:pointer;
+  }
 }
 
 .header-theme-toggler{

@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { ThemeContext } from "../store/context/ThemeContext";
 import "./Header.scss";
+
 export default function Header() {
-  const [isNightModeOn,setIsNightModeOn]=useState(true);
-  const toggleThemeMode = ()=> {
-    setIsNightModeOn(!isNightModeOn);
-  }
+  const {isNightModeOn, toggleThemeMode} = useContext(ThemeContext);
   return (
     <div className="header-main-container">
-      <h1 className="header-title">Pokemon Arena Battle</h1>
+      <NavLink className="invisible-link" to="/">
+      <h1 className="header-title" >Pokemon Arena Battle</h1>
+      </NavLink>
       <button className="header-theme-button" onClick={toggleThemeMode}>
       {!isNightModeOn && (
         <img 
