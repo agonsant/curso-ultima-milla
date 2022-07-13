@@ -1,0 +1,38 @@
+#map {
+    height: 15rem;
+    width: 30rem;
+}
+
+#ball {
+    background-color: aqua;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 24rem;
+    margin-top: 30%;
+    margin-left: 30%;
+}
+
+/* ANIMATION only with css*/
+/* #ball {
+    background-color: aqua;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 24rem;
+    animation: ballTumbling infinite 3s linear;
+    margin-top: 30%;
+    margin-left: 30%;
+} */
+
+/* @keyframes ballTumbling {
+    0% {
+        background-color: aquamarine;
+        transform: rotate(0) translate3D(-50%, -50%, 0);
+    }
+    30% {
+        background-color: green;
+    }
+    100% {
+        background-color: aquamarine;
+        transform: rotate(360deg) translate3D(-50%, -50%, 0);
+    }
+} */
