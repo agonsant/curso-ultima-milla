@@ -1,11 +1,21 @@
-import './App.css';
-import React from 'react';
+import { Routes, Route, Navigate } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import ArenaPage from "./pages/ArenaPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
-    <div className="App">
-      <p>Pokemon-group-02</p>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route
+          path="/home"
+          element={<HomePage language={""} theme={false} />}
+        />
+        <Route path="/arena" element={<ArenaPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
 
