@@ -1,30 +1,23 @@
 import React, {useState} from 'react';
 import { useNavigate } from "react-router";
-import { UserContext } from '../store/context/userContext';
 
 import "./HomePage.css";
 
-const HomePage: React.FC = (): JSX.Element => {
-  const initialFormData = {
-    name: "",
-    language: "",  
-  };  
-
-  const [formData, setFormData] = useState<{name: string, language: string}>(initialFormData);
+const HomePage: React.FC = (): JSX.Element => { 
+  const [userData, setUserData] = useState<{name: string, language: string}|null>(null);
   const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | any>) => {
-    setFormData( event.target.value );  
+    setUserData( event.target.value );  
   }; 
 
   const onSubmitData = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      console.log("formData", formData);
+      console.log("userData", userData);
       navigate(`/arena`);
   };
     
   return (
-    <UserContext.Provider value={formData}>
       <div className="home-page">
         <h1 className="home-page__title"> Welcome to the Pokemon Game </h1>
         <form className="home-page__form" onSubmit={onSubmitData}>
@@ -33,7 +26,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 type="text" 
                 id="name"
                 autoComplete="off"
-                value={formData.name}
+                value={userData?.name}
                 onChange={handleChange}
                 placeholder="Enter your name"
             />
@@ -43,7 +36,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 type="text"
                 id="language"
                 autoComplete="off"
-                value={formData.language}
+                value={userData?.language}
                 onChange={handleChange}
                 placeholder="Enter language"
             /> 
@@ -53,7 +46,6 @@ const HomePage: React.FC = (): JSX.Element => {
             </div>
         </form>
       </div>
-    </UserContext.Provider>
   )
 };
 
