@@ -2,6 +2,9 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "sass": "^1.53.0"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
