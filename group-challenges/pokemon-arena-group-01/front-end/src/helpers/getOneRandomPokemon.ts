@@ -18,7 +18,7 @@ const getOneRandomPokemon = async () => {
         console.log(pokemonProperties);
         return pokemonProperties;
     } catch (error) {
-        return false
+        throw new Error("404 - Pokemon Randon Not Found");
     }
 };
 
