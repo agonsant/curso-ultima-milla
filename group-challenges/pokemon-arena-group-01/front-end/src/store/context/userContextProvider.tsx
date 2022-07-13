@@ -1,15 +1,15 @@
-import { useReducer } from "react"
+import { useState } from "react"
 import { UserContext} from "./userContext";
-import userReducer from "../reducers/userReducer";
 
 const UserContextProvider = ({children}:any) => {
-  const [user] = useReducer(userReducer, {name:"", language:""});
-    
+  const [user, setUser] = useState({name:"", language:""})
+  const {name, language}=user;  
   return (
     <UserContext.Provider 
-      value={ user}
+      value={ {name, language, setUser} }
     >
       {children}    
+
     </UserContext.Provider>
   )
 };

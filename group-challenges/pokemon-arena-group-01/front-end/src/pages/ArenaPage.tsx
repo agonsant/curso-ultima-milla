@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-
 import { UserContext } from '../store/context/userContext';
 
 const ArenaPage: React.FC = (): JSX.Element => {
   const user = useContext(UserContext);
+  console.log(user);
   return (
     <div>
       <h1> Arena Page </h1>
