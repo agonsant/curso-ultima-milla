@@ -5,17 +5,21 @@ const getOneRandomPokemon = async () => {
     const apiURL = `https://pokeapi.co/api/v2/pokemon/${randomPokemon}`; // The random number it's used as id parameter
 
     const res = await fetch(apiURL);
-    const response = await res.json();
-    const pokemonProperties = {
-        name: response.name,
-        id: response.id,
-        moves: response.moves,
-        types: response.types,
-        stats: response.stats,
-        sprites: response.sprites,
+    try {
+        const response = await res.json();
+        const pokemonProperties = {
+            name: response.name,
+            id: response.id,
+            moves: response.moves,
+            types: response.types,
+            stats: response.stats,
+            sprites: response.sprites,
+        }
+        console.log(pokemonProperties);
+        return pokemonProperties;
+    } catch (error) {
+        return false
     }
-    console.log(pokemonProperties);
-    return pokemonProperties;
 };
 
 getOneRandomPokemon();

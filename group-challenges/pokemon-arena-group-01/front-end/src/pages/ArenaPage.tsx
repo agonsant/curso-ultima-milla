@@ -16,18 +16,22 @@ const ArenaPage = () => {
         setLoading(true);
         getOneRandomPokemon()
         .then((data) => {
-            setRandomPokemon(data);
-            setLoading(false);
+            if(data) {
+                setRandomPokemon(data);
+            }
         });
+        setLoading(false);
     }, []);
 
     const handleSearchRandomPokemon = () => {
         setLoading(true);
         getOneRandomPokemon()
         .then((data) => {
-            setRandomPokemon(data);
-            setLoading(false);
+            if(data) {
+                setRandomPokemon(data);
+            }
         });
+        setLoading(false);
     }
 
 
@@ -38,12 +42,24 @@ const ArenaPage = () => {
         {isLoading &&
             <Loading />
         }
-        <h3>Play with: { randomPokemon?.name.toUpperCase() }</h3>
-        <h3>id: { randomPokemon?.id }</h3>
-        <p>moves name: { randomPokemon?.moves?.map(move => move.move.name) }</p>
-        <p>slot: { randomPokemon?.types?.map(type => type.slot) }</p>
-        <p>stat effort: { randomPokemon?.stats?.map(stat => stat.effort) }</p>
-        {/* <p>sprites: { randomPokemon?.sprites?.map(sprite => sprite.front_default) }</p> */}
+        {randomPokemon &&
+        <div>
+            <h3>Play with: { randomPokemon.name.toUpperCase() }</h3>
+            <h3>id: { randomPokemon.id }</h3>
+            <p>moves name: { randomPokemon.moves.map(move => move.move.name) }</p>
+            <p>slot: { randomPokemon.types.map(type => type.slot) }</p>
+
+            {randomPokemon.sprites.front_default &&
+                <img src={randomPokemon.sprites.front_default} alt="Pokemon" />
+            }
+            {randomPokemon.sprites.back_default &&
+                <img src={randomPokemon.sprites.back_default} alt="Pokemon" />
+            }
+            <p>stat effort: { randomPokemon?.stats?.map(stat => stat.effort) }</p>
+        </div>
+
+        }
+
 
         </>
     )

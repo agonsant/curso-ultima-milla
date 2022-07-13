@@ -4,7 +4,7 @@ export type RandomPokemon = {
     name: string,
     stats: Array<PokemonStats>,
     types: Array<PokemonType>,
-    sprites: Array<PokemonSprites>,
+    sprites: PokemonSprites,
 };
 
 export type PokemonMove = {
@@ -28,8 +28,14 @@ export type PokemonMoveVersion = {
 }
 
 export type PokemonSprites = {
-    front_default: string,
-    back_default: string,
+    back_default: string | null,
+    back_female: string | null,
+    back_shiny: string | null,
+    back_shiny_female: string | null,
+    front_default: string | null,
+    front_female: string | null,
+    front_shiny: string | null,
+    front_shiny_female: string | null,
 };
 
 export type PokemonType = {
