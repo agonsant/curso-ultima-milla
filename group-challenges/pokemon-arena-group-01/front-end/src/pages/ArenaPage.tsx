@@ -1,12 +1,15 @@
-
 import React from 'react';
 import { useState, useEffect} from 'react';
+import React, { useContext } from "react";
+import { UserContext } from '../store/context/userContext';
+
 import Loading from '../components/Loading';
 import getOneRandomPokemon from '../helpers/getOneRandomPokemon';
 import { RandomPokemon } from '../models/randomPokemon-model';
 
 
 const ArenaPage = () => {
+    const user = useContext(UserContext);
 
     const [randomPokemon, setRandomPokemon] = useState<RandomPokemon>();
 
@@ -39,6 +42,8 @@ const ArenaPage = () => {
     return (
         <>
         <h2>Arena Page</h2>
+           <p> Player's name: {user?.name} </p>
+           <p> Game language: {user?.language} </p>
         <button onClick={ handleSearchRandomPokemon }>Search Random Pokemon</button>
         {isLoading &&
             <Loading />
