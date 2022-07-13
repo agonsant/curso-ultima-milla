@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./Header.scss";
 export default function Header() {
   const [isNightModeOn,setIsNightModeOn]=useState(true);
@@ -7,7 +8,9 @@ export default function Header() {
   }
   return (
     <div className="header-main-container">
-      <h1 className="header-title">Pokemon Arena Battle</h1>
+      <NavLink className="invisible-link" to="/">
+      <h1 className="header-title" >Pokemon Arena Battle</h1>
+      </NavLink>
       <button className="header-theme-button" onClick={toggleThemeMode}>
       {!isNightModeOn && (
         <img 
