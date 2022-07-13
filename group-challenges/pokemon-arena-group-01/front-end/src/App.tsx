@@ -8,17 +8,16 @@ import NotFoundPage from './pages/NotFoundPage';
 
 
 function App() {
+
   return (
     <BrowserRouter>
       <Header />
         <Routes>
           <Route path="/" element={ <HomePage/> }/>
-          <Route path="/home" element={ <HomePage/> }/>
-          <Route path="/arena" element={ <ArenaPage/> }/>
+          <Route path="/arena" element={ <ArenaPage /> }/>
           <Route path="/ranking" element={ <RankingPage/> }/>
           <Route path="/*" element={<NotFoundPage/>}/>
         </Routes>
-
       <Footer />
     </BrowserRouter> 
   );
