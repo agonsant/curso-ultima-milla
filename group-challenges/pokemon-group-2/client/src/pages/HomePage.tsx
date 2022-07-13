@@ -12,7 +12,8 @@ const HomePage: React.FC<HomePageProps> = ({ language, theme }) => {
 
   const idPokemon = "1";
  
-   const urlImage = async(id: string) => await getPokemonImage(id)
+  const urlImage = async(id: string) => await getPokemonImage(id)
+  
   return (
     <>
       <h1>Hello world - Homepage</h1>
