@@ -1,7 +1,7 @@
 const RankingPage = () => {
     return (
         <>
-        <h1>Ranking Page</h1>
+        <h2>Ranking Page</h2>
         </>
     )
 };
