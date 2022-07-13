@@ -11,3 +11,19 @@
 body{
   background-color:$background-night-mode;
 }
+
+.text-night{
+  color: $text-color-night-mode;
+}
+
+.text-light{
+  color: $text-color-light-mode;
+}
+
+.background-night{
+  background-color: $background-night-mode;
+}
+
+.background-light{
+  background-color: $background-light-mode;
+}

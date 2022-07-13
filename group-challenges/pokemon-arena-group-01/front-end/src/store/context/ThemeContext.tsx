@@ -1,9 +1,8 @@
-import React from 'react';
+import  React  from "react";
 
 interface IThemeContext {
-isNightModeOn:boolean,
-toggleThemeMode?:()=>void;
+isNightModeOn:boolean;
+toggleThemeMode:()=>void;
 };
 
-export const ThemeContext = React.createContext<IThemeContext>({isNightModeOn:true});
-ThemeContext.displayName = "Theme context";
+export const ThemeContext = React.createContext<IThemeContext>({isNightModeOn:true,toggleThemeMode:()=>{}});
