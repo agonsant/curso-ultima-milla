@@ -1,10 +1,13 @@
 import React from "react";
 
 //an user must have a name and a language
+
 export interface IUser {
-  name: string,
-  language: string,
+  name: string;
+  language: string;
+};
+export interface IUserContext extends IUser {
+  setUser : (user:IUser) => void;
 };
 
-const defaultUser = null;
-export const UserContext = React.createContext<IUser | null>(defaultUser);
+export const UserContext = React.createContext<IUserContext>({name:"", language:"", setUser:()=>{}});

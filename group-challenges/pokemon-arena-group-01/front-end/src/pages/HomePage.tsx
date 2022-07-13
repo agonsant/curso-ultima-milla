@@ -2,20 +2,22 @@ import React, {useContext, useState} from 'react';
 import { useNavigate } from "react-router";
 import { ThemeContext } from '../store/context/ThemeContext';
 
+import { UserContext } from '../store/context/userContext';
 import "./HomePage.scss";
 
 const HomePage: React.FC = (): JSX.Element => { 
+
   const {isNightModeOn} = useContext(ThemeContext);
   const [userData, setUserData] = useState<{name: string, language: string}|null>(null);
-  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | any>) => {
-    setUserData( event.target.value );  
-  }; 
+  const navigate = useNavigate();
 
   const onSubmitData = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      console.log("userData", userData);
+      const form = event.target as HTMLFormElement;
+      const user = { name: form.userName.value, language: form.language.value}
+      setUser(user);
       navigate(`/arena`);
   };
     
@@ -27,9 +29,8 @@ const HomePage: React.FC = (): JSX.Element => {
             <input 
                 type="text" 
                 id="name"
+                name="userName"
                 autoComplete="off"
-                value={userData?.name}
-                onChange={handleChange}
                 placeholder="Enter your name"
             />
             </div>  
@@ -37,14 +38,13 @@ const HomePage: React.FC = (): JSX.Element => {
             <input 
                 type="text"
                 id="language"
+                name="language"
                 autoComplete="off"
-                value={userData?.language}
-                onChange={handleChange}
                 placeholder="Enter language"
             /> 
             </div>
             <div className="home-page__item">
-            <button type="submit" > Start the game  </button>
+              <button type="submit" > Start the game  </button>
             </div>
         </form>
       </div>
