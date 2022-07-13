@@ -16,23 +16,19 @@ const ArenaPage = () => {
         setLoading(true);
         getOneRandomPokemon()
         .then((data) => {
-            if(data) {
                 setRandomPokemon(data);
-            }
+                setLoading(false);
         });
-        setLoading(false);
     }, []);
 
     const handleSearchRandomPokemon = () => {
         setLoading(true);
         getOneRandomPokemon()
         .then((data) => {
-            if(data) {
                 setRandomPokemon(data);
-            }
+                setLoading(false);
         });
-        setLoading(false);
-    }
+    };
 
 
     return (
