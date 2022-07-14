@@ -6,7 +6,7 @@ type ThemeProps = {
 };
 
 const ThemeContextProvider: React.FC<ThemeProps> = ({ children }: any) => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const themeSwitchHandler = () => {
     setIsDarkMode(!isDarkMode);

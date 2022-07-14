@@ -1,8 +1,8 @@
+import styled from "styled-components";
 import React, { useContext } from "react";
 import StartOptions from "../components/StartOptions";
-import PokemonCard from "../components/PokemonCard";
 import { useNavigate } from "react-router-dom";
-import ThemeContextProvider from "../store/contexts/themeContextProvider";
+import ThemeContext from "../store/contexts/themeContext";
 
 interface HomePageProps {
   language: string;
@@ -11,14 +11,14 @@ interface HomePageProps {
 
 const HomePage: React.FC<HomePageProps> = () => {
   let navigate = useNavigate();
-  const { themeSwitchHandler } = useContext(ThemeContextProvider as any);
+  const { themeSwitchHandler } = useContext(ThemeContext);
 
   const onFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
 
-    if (form.themeMode.value === "Dark") {
-      themeSwitchHandler();
+    if (form.themeMode.value === "Dark Mode") {
+      themeSwitchHandler(true);
     }
 
     console.log(
@@ -32,11 +32,23 @@ const HomePage: React.FC<HomePageProps> = () => {
 
   return (
     <>
-      <h1>Hello world - Homepage</h1>
-      <StartOptions actionOnSubmit={onFormSubmit}></StartOptions>
-      <PokemonCard />
+      <Wrapper>
+        <h1>Pokémon</h1>
+        <StartOptions actionOnSubmit={onFormSubmit}></StartOptions>
+      </Wrapper>
     </>
   );
 };
 
 export default HomePage;
+
+const Wrapper = styled.section`
+  min-height: 90vh;
+  min-width: 90vw;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 0 1rem;
+`;

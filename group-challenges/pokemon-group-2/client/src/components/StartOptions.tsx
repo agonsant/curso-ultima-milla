@@ -8,7 +8,11 @@ const StartOptions: React.FC<IStartOptions> = ({ actionOnSubmit }) => {
   return (
     <>
       <StyledOptionsBox>
-        <StyledTitle>Settings</StyledTitle>
+        <StyledImage
+          className="home-page__image"
+          src="images/gameboy_advanced-bg-preview.png"
+          alt="Gameboy Advanced"
+        />
         <StyledForm onSubmit={actionOnSubmit}>
           <p className="home-page__optionText--language">Language:</p>
           <div className="home-page__languages">
@@ -25,7 +29,7 @@ const StartOptions: React.FC<IStartOptions> = ({ actionOnSubmit }) => {
               <option value="Dark Mode">Dark Mode</option>
             </select>
           </div>
-          <FormButton type="submit">Start game</FormButton>
+          <FormButton type="submit">Start</FormButton>
         </StyledForm>
       </StyledOptionsBox>
     </>
@@ -40,53 +44,52 @@ const StyledOptionsBox = styled.section`
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  padding: 0 2rem;
+  letter-spacing: 0.1em;
 `;
 
-const StyledTitle = styled.h1`
-  color: #571648
+const StyledImage = styled.img`
+  width: 50rem;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
-  padding: 0 2rem;
+  z-index: 0;
 `;
 
 const StyledForm = styled.form`
-  background-color: #173254;
+  background-color: #e3e3e3;
+  border-radius: 3px;
+  border: 1px solid black;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
-  padding: 0 2rem;
-  height: 100%;
-  width: 36rem;
+  top: -390px;
+  height: 13rem;
+  width: 18rem;
   text-align: center;
-  font-family: inherit;
+  font-family: "DotGothic16", sans-serif;
+  z-index: 1;
   .home-page__languages {
-    background-color: #eee;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 15px;
-    margin: 8px 0;
-    width: 90%;
-    font-family: inherit;
+    width: 100%;
+    font-family: "DotGothic16", sans-serif;
   }
   .home-page__theme {
-    background-color: #eee;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 15px;
-    margin: 8px 0;
     width: 90%;
-    font-family: inherit;
+    font-family: "DotGothic16", sans-serif;
   }
   .home-page__optionText {
     &--language {
-      color: #fff;
+      color: #000;
+      font-size: 1rem;
+      margin: 10px;
     }
     &--theme {
-      color: #fff;
+      color: #000;
+      font-size: 1rem;
+      margin: 10px;
     }
   }
   .home-page__label {
@@ -97,24 +100,19 @@ const StyledForm = styled.form`
       padding: 0 10px;
     }
   }
-  @media screen and (min-device-width: 320px) and (max-width: 768px) {
-    padding-right: 0rem;
-    width: 24rem;
-  }
 `;
 
 const FormButton = styled.button`
   background-color: ${(props) => props.theme.primary};
-  width: 250px;
-  height: 60px;
+  width: 100px;
+  height: 30px;
   color: #fff;
   font-weight: 900;
-  font-family: inherit;
-  font-size: 1.3rem;
-  padding: 0.6rem 2rem;
-  margin: 2rem 2rem;
+  font-family: "DotGothic16", sans-serif;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+  margin: 1rem;
   border: none;
-  border-radius: 15px;
   cursor: pointer;
   &:hover {
     color: #fff;
