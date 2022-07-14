@@ -1,12 +1,12 @@
 import { createContext } from "react";
 
 interface IThemeContext {
-  currentTheme: string | null;
-  themeSwitchHandler: (currentTheme: string) => void;
+  isDarkMode: boolean;
+  themeSwitchHandler: (isDarkMode: boolean) => void;
 }
 
-const ThemeContext = createContext<IThemeContext | null>({
-  currentTheme: "",
+const ThemeContext = createContext<IThemeContext>({
+  isDarkMode: false,
   themeSwitchHandler: () => {},
 });
 

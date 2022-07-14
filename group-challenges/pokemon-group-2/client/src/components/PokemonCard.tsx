@@ -6,17 +6,21 @@ const PokemonCard = () => {
   const { getPokemonImageFront, getPokemonImageBack, getPokemonName } = useAPI();
   const [urlImageFront, setUrlImageFront] = useState ("")
   const [urlImageBack, setUrlImageBack] = useState ("")
-  const [pokemonName, setPokemonName] = useState ("")
-  const idPokemon = "1";
+  const [pokemonNameA, setPokemonNameA] = useState ("")
+  const [pokemonNameB, setPokemonNameB] = useState ("")
+  const idPokemonA = "1";
+  const idPokemonB = "25";
  
   const getPokemonDataToRender = async() => {
-    setUrlImageFront(await getPokemonImageFront(idPokemon))
-    setUrlImageBack(await getPokemonImageBack(idPokemon))
-    setPokemonName(await getPokemonName(idPokemon))
+    setUrlImageFront(await getPokemonImageFront(idPokemonA))
+    setUrlImageBack(await getPokemonImageBack(idPokemonB))
+    setPokemonNameA(await getPokemonName(idPokemonA))
+    setPokemonNameB(await getPokemonName(idPokemonB))
     return {
       setUrlImageFront,
       setUrlImageBack,
-      setPokemonName  
+      pokemonNameA,
+      pokemonNameB  
     }
   }
 
@@ -26,12 +30,12 @@ const PokemonCard = () => {
     <>
       <CardContainer>
         <p>Some pokemon Front </p>
-        <p>{pokemonName}</p>
+        <p>{pokemonNameA}</p>
         <img alt="pokemon front" width="100" src={`${urlImageFront}`}/>
       </CardContainer>
       <CardContainer>
         <p>Some pokemon Back</p>
-        <p>{pokemonName}</p>
+        <p>{pokemonNameB}</p>
         <img alt="pokemon back" width="100" src={`${urlImageBack}`}/>
       </CardContainer>
     </>

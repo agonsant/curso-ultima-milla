@@ -6,20 +6,23 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "./themes/mainTheme";
-import ThemeContextProvider from "./store/contexts/themeContextProvider";
+import ThemeContextProvider from "./store/contexts/themeContext/themeContextProvider";
+import PokemonContextProvider from "./store/contexts/pokemonContext/pokemonContextProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ThemeContextProvider>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ThemeProvider>
-    </ThemeContextProvider>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <PokemonContextProvider>
+          <ThemeContextProvider>
+            <App />
+          </ThemeContextProvider>
+        </PokemonContextProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
