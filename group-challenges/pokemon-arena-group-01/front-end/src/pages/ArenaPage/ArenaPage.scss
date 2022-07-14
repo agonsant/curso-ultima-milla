@@ -1,0 +1,15 @@
+.arena-page{
+  margin: 20px;
+}
+.arena {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+
+  &__players {
+    display: flex;
+  }
+}

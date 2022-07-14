@@ -1,0 +1,14 @@
+@import "../../../styles/variables";
+
+.nav-link{
+  color: $main-color;
+  text-decoration: inherit;
+  font-size: 30px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.not-found-page{
+  margin: 20px;
+}

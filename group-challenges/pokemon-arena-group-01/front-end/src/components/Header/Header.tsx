@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { ThemeContext } from "../store/context/ThemeContext";
+import { ThemeContext } from "../../store/context/ThemeContext";
 import "./Header.scss";
 
 export default function Header() {
@@ -8,8 +8,9 @@ export default function Header() {
   return (
     <div className="header-main-container">
       <NavLink className="invisible-link" to="/">
-      <h1 className="header-title" >Pokemon Arena Battle</h1>
+      <img className="header-logo" alt="logo" src="pokemon-logo.svg"></img>
       </NavLink>
+      <h1 className="header-title" >Pokemon Arena Battle</h1>
       <button className="header-theme-button" onClick={toggleThemeMode}>
       {!isNightModeOn && (
         <img 
