@@ -5,11 +5,11 @@ type ThemeProps = {
   children: React.ReactNode;
 };
 
-const ThemeContextProvider = ({ children }: ThemeProps) => {
-  const [isDarkMode, setisDarkMode] = useState(true);
+const ThemeContextProvider: React.FC<ThemeProps> = ({ children }: any) => {
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const themeSwitchHandler = () => {
-    setisDarkMode(!isDarkMode);
+    setIsDarkMode(!isDarkMode);
   };
 
   return (

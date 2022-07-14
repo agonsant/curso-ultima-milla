@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import StartOptions from "../components/StartOptions";
 import PokemonCard from "../components/PokemonCard";
 import { useNavigate } from "react-router-dom";
+import ThemeContextProvider from "../store/contexts/themeContextProvider";
 
 interface HomePageProps {
   language: string;
@@ -10,13 +11,20 @@ interface HomePageProps {
 
 const HomePage: React.FC<HomePageProps> = () => {
   let navigate = useNavigate();
+  const { themeSwitchHandler } = useContext(ThemeContextProvider as any);
 
   const onFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
+
+    if (form.themeMode.value === "Dark") {
+      themeSwitchHandler();
+    }
+
     console.log(
       `Submited with ${form.language.value} and ${form.themeMode.value}`
     );
+
     setTimeout(() => {
       navigate(`/arena`);
     }, 500);

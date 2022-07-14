@@ -5,7 +5,7 @@ interface IThemeContext {
   themeSwitchHandler: (isDarkMode: boolean) => void;
 }
 
-const ThemeContext = createContext<IThemeContext | null>({
+const ThemeContext = createContext<IThemeContext>({
   isDarkMode: false,
   themeSwitchHandler: () => {},
 });
