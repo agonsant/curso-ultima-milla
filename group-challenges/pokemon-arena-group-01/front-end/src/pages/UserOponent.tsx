@@ -62,6 +62,7 @@ const UserOponent: React.FC = (): JSX.Element => {
                 }
                 </section>
             </div>
+            <button type='submit'>Lets Figth!</button>
 
         </div>
     )
