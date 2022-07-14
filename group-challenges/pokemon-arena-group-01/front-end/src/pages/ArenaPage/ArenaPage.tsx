@@ -59,8 +59,14 @@ const ArenaPage = () => {
             }
             <p>stat effort: { randomPokemon?.stats?.map(stat => stat.effort) }</p>
             <div className="arena">
-              { <Statistics pokemon={randomPokemon} />}
-              { <MenuMoves pokemon={randomPokemon} />}
+              <div className="arena__players">
+              { <Statistics pokemon={randomPokemon} />}  
+              { <Statistics pokemon={randomPokemon} />}  
+              </div>  
+              { <MenuMoves 
+                  pokemon={randomPokemon} 
+                  loading={isLoading}
+                />}
             </div>
         </div>
         }

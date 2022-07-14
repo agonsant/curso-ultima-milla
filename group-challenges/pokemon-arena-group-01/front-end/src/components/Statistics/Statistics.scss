@@ -1,5 +1,11 @@
-.statistics {
-  width: 200px;
-  height: 65px;  
-  background-color: blanchedalmond;
+.pokemon {
+  display:flex;
+  flex-direction: column;
+
+  &__info {
+    width: 200px;
+    height: 65px;  
+    background-color: blanchedalmond;
+  }
 }
+
