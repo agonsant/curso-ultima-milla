@@ -4,15 +4,14 @@ import { UserContext } from '../store/context/userContext';
 import Loading from '../components/Loading';
 import getOneRandomPokemon from '../helpers/getOneRandomPokemon';
 import { RandomPokemon } from '../models/randomPokemon-model';
+import { ThemeContext } from '../store/context/ThemeContext';
 
 
 const ArenaPage = () => {
+    const {isNightModeOn} = useContext(ThemeContext);
     const user = useContext(UserContext);
-
     const [randomPokemon, setRandomPokemon] = useState<RandomPokemon>();
-
     const [isLoading, setLoading] = useState(false);
-
 
     useEffect(() => {
         setLoading(true);
@@ -32,9 +31,9 @@ const ArenaPage = () => {
         });
     };
 
-
     return (
         <>
+        <div className={`"arena-page" ${isNightModeOn ? "background-night text-night" : "background-light text-light"}`}>
         <h2>Arena Page</h2>
            <p> Player's name: {user?.name} </p>
            <p> Game language: {user?.language} </p>
@@ -57,10 +56,8 @@ const ArenaPage = () => {
             }
             <p>stat effort: { randomPokemon?.stats?.map(stat => stat.effort) }</p>
         </div>
-
         }
-
-
+        </div>
         </>
     )
 };
