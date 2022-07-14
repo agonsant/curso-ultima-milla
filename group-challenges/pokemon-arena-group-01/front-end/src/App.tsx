@@ -5,9 +5,11 @@ import HomePage from './pages/HomePage/HomePage';
 import ArenaPage from './pages/ArenaPage/ArenaPage';
 import RankingPage from './pages/RankingPage/RankingPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import "./App.scss"; 
+import UserOponent from './pages/UserOponent';
+import "./App.scss";
 import { useContext } from 'react';
 import { ThemeContext } from './store/context/ThemeContext';
+
 
 
 function App() {
@@ -20,13 +22,14 @@ function App() {
       <Header />
         <Routes>
           <Route path="/" element={ <HomePage/> }/>
+          <Route path="/useroponent" element={ <UserOponent/> }/>
           <Route path="/arena" element={ <ArenaPage /> }/>
           <Route path="/ranking" element={ <RankingPage/> }/>
           <Route path="/*" element={<NotFoundPage/>}/>
         </Routes>
        <Footer />
       </div>
-    </BrowserRouter> 
+    </BrowserRouter>
   );
 }
 

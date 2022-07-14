@@ -23,14 +23,6 @@ const ArenaPage = () => {
         });
     }, []);
 
-    const handleSearchRandomPokemon = () => {
-        setLoading(true);
-        getOneRandomPokemon()
-        .then((data) => {
-                setRandomPokemon(data);
-                setLoading(false);
-        });
-    };
 
     return (
         <>
@@ -38,7 +30,6 @@ const ArenaPage = () => {
         <h2>Arena Page</h2>
            <p> Player's name: {user?.name} </p>
            <p> Game language: {user?.language} </p>
-        <button onClick={ handleSearchRandomPokemon }>Search Random Pokemon</button>
         {isLoading &&
             <Loading />
         }
@@ -58,11 +49,11 @@ const ArenaPage = () => {
             <p>stat effort: { randomPokemon?.stats?.map(stat => stat.effort) }</p>
             <div className="arena">
               <div className="arena__players">
-              { <Statistics pokemon={randomPokemon} />}  
-              { <Statistics pokemon={randomPokemon} />}  
-              </div>  
-              { <MenuMoves 
-                  pokemon={randomPokemon} 
+              { <Statistics pokemon={randomPokemon} />}
+              { <Statistics pokemon={randomPokemon} />}
+              </div>
+              { <MenuMoves
+                  pokemon={randomPokemon}
                   loading={isLoading}
                 />}
             </div>

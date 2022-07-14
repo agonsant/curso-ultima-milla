@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { UserContext } from '../../store/context/userContext';
 import "./HomePage.scss";
 
-const HomePage: React.FC = (): JSX.Element => { 
+const HomePage: React.FC = (): JSX.Element => {
 
   const { setUser } = useContext(UserContext);
 
@@ -15,32 +15,32 @@ const HomePage: React.FC = (): JSX.Element => {
       const form = event.target as HTMLFormElement;
       const user = { name: form.userName.value, language: form.language.value}
       setUser(user);
-      navigate(`/arena`);
+      navigate(`/useroponent`);
   };
-    
+
   return (
       <div className="home-page">
         <h1 className="home-page__title"> Welcome to the Pokemon Game </h1>
         <form className="home-page__form" onSubmit={onSubmitData}>
-            <div className="home-page__user home-page__item"> 
-            <input 
-                type="text" 
+            <div className="home-page__user home-page__item">
+            <input
+                type="text"
                 id="name"
                 name="userName"
                 autoComplete="off"
                 placeholder="Enter username"
                 required
             />
-            </div>  
+            </div>
             <div className="home-page__languages home-page__item">
-            <input 
+            <input
                 type="text"
                 id="language"
                 name="language"
                 autoComplete="off"
                 placeholder="Enter language"
                 required
-            /> 
+            />
             </div>
             <div className="home-page__item">
               <button type="submit" > Start the game  </button>
