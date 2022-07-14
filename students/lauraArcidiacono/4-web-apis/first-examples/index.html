@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Apis - Laura</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+      integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+      crossorigin=""
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+    <button id="SHARE_BTN">Share</button>
+
+    <button id="GEOLOCATION">Obtener la geolocalización</button>
+    <p id="GEO_RESULT"></p>
+    <div id="map"></div>
+
+    <div id="ball"></div>
+
+    <!-- // FIRST: WEB SHARE API -->
+    <script>
+      document
+        .getElementById("SHARE_BTN")
+        .addEventListener("click", async () => {
+          const dataToShare = {
+            url: "https://cdn.holidayguru.es/wp-content/uploads/2018/09/Azure-beach-with-rocky-mountains-and-clear-water-of-Indian-ocean-at-sunny-day-Bali-Indonesia-shutterstock_459773704.jpg",
+            text: "Estoy compartiendo desde un botón",
+          };
+          try {
+            const info = await navigator.share(dataToShare); //Esta función es la que comparte
+            console.log(info);
+          } catch (err) {
+            console.error(err);
+          }
+        });
+    </script>
+
+    <!-- // SECOND: WEB GEOLOCATION API WITH CALLBACKS-->
+    <!-- <script>
+      const map = L.map('map');
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 15,
+        attribution: "Web-apis, first examples",
+      }).addTo(map);
+
+      const geoSuccess = (g) => {
+        const resultDOM = document.getElementById("GEO_RESULT");
+        resultDOM.textContent = `${g.coords.latitude}, ${g.coords.longitude}`;
+        map.setView([g.coords.latitude, g.coords.longitude], 15)
+        L.marker([g.coords.latitude, g.coords.longitude]).addTo(map);
+      };
+
+      const geoError = (err) => {
+        const resultDOM = document.getElementById("GEO_RESULT");
+        resultDOM.textContent = err.message;
+      };
+
+      document.getElementById("GEOLOCATION").addEventListener("click", () => {
+        const geoOptions = { enableHighAccuracy: true };
+        navigator.geolocation.getCurrentPosition(
+          geoSuccess,
+          geoError,
+          geoOptions
+        );
+      });
+    </script> -->
+
+    <!-- THIRD: WEB GEOLOCATION API WITH PROMISES -->
+    <script>
+      const getCurrentPosition = () => {
+        // envolver una asincronía gestionada con callbacks, en una promesa
+        return new Promise((resolve, reject) => {
+          const geoOptions = { enableHighAccuracy: true };
+          navigator.geolocation.getCurrentPosition(resolve, reject, geoOptions);
+        });
+      };
+
+      // BUILD THE MAP
+      const map = L.map("map");
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "Web-apis, first examples",
+      }).addTo(map);
+
+      // SUCCESS FN
+      const geoSuccess = (geolocalización) => {
+        const resultDOM = document.getElementById("GEO_RESULT");
+        resultDOM.textContent = `${geolocalización.coords.latitude}, ${geolocalización.coords.longitude}`;
+        map.setView([geolocalización.coords.latitude, geolocalización.coords.longitude], 15);
+        L.marker([geolocalización.coords.latitude, geolocalización.coords.longitude]).addTo(map);
+      };
+
+      // ERROR FN
+      const geoError = (err) => {
+        const resultDOM = document.getElementById("GEO_RESULT");
+        resultDOM.textContent = err.message;
+      };
+
+      // EVENT LISTENER
+      document
+        .getElementById("GEOLOCATION")
+        .addEventListener("click", async () => {
+          try {
+            const geolocalización = await getCurrentPosition();
+            geoSuccess(geolocalización);
+          } catch (err) {
+            geoError(err);
+          }
+        });
+    </script>
+
+    <!-- FOURTH: WEB ANIMATIONS API -->
+    <script>
+      // Each object represents a key from the css
+      // The keys are equally spaced by default unless you specify an offset on a key.
+      // The offset atribute allow us to specify percentages along the animation
+      var ballTumbling = [
+        { transform: 'rotate(0) translate3D(-50%, -50%, 0)', backgroundColor: '#15f4ee' },
+        { backgroundColor: '#ff9999', offset: 0.3 },
+        { transform: 'rotate(360deg) translate3D(-50%, -50%, 0)', backgroundColor: '#15f4ee' }
+      ];
+
+      // An object of timing properties, using milliseconds
+      // The default animation-timing-function is linear (en CSS es ease)
+      var ballTiming = {
+        duration: 3000,
+        iterations: Infinity
+      }
+// My keys // My timing properties
+      document.getElementById("ball").animate(
+        ballTumbling,
+        ballTiming
+      )
+
+    </script>
+
+  </body>
+</html>
