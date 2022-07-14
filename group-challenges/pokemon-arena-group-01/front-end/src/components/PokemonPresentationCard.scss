@@ -4,15 +4,17 @@
     align-items: center;
     border: solid 0.1rem black;
     border-radius: 1rem;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    margin: 1.5rem;
-    min-height: 40rem;
+    box-shadow: rgb(50 50 93 / 25%) 0px 50px 100px -20px, rgb(0 0 0 / 30%) 0px 30px 60px -30px, rgb(10 37 64 / 35%) 0px -2px 6px 0px inset;
+    padding: 1.5rem;
+    margin: 1rem;
+    min-height: 20rem;
+    width: 90%;
     background-color: rgb(236, 240, 244);
+    justify-content: center;
 }
 
-
 .pokemon-presentation-card__image {
-    width: 8rem;
+    width: 20rem;
 }
 
 .image__image {
@@ -21,14 +23,16 @@
 
 .pokemon-presentation-card__name {
     margin: 1rem;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 .pokemon-presentation-card__id {
     margin-bottom: 1rem;
+    font-size: 2rem;
 }
 
 .pokemon-presentation-card__stat {
     color: rgb(144, 101, 22);
+    font-size: 1.5rem;
 }
 
 .pokemon-presentation-card__moves {
@@ -39,4 +43,5 @@
 
 .pokemon-presentation-card__slot {
     color: rgb(144, 101, 22);
+    font-size: 1.5rem;
 }

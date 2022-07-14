@@ -36,7 +36,7 @@ const UserOponent: React.FC = (): JSX.Element => {
 
     return (
         <div className={`user-oponent-page ${isNightModeOn ? "background-night" : "background-light"}`}>
-            <h2>Player Vs Computer</h2>
+            <h2 className='user-oponent-page__title'>{user?.name} Vs Computer</h2>
             <div className='user-oponent-page__container'>
             {isLoading &&
                 <Loading />
@@ -44,8 +44,7 @@ const UserOponent: React.FC = (): JSX.Element => {
                 <section className='container__player'>
                     {userRandomPokemon &&
                         <section className='player__info'>
-                            <h3> {user?.name} </h3>
-                            <h3>Your Pokemon</h3>
+                            <h3 className='info__pokemon'> Your Pokemon </h3>
                             <PokemonPresentationCard
                                 {...userRandomPokemon}
                             />
@@ -55,8 +54,7 @@ const UserOponent: React.FC = (): JSX.Element => {
                 <section className='container__player'>
                     {computerRandomPokemon &&
                         <section className='player__info'>
-                            <h3> Computer </h3>
-                            <h3>Your Oponent</h3>
+                            <h3 className='info__pokemon'> Computer </h3>
                             <PokemonPresentationCard
                                 {...computerRandomPokemon}
                             />

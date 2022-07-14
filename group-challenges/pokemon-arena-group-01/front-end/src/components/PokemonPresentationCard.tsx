@@ -14,7 +14,7 @@ return (
             <h3 className="pokemon-presentation-card__name" >{ name.toUpperCase() }</h3>
             <h3 className="pokemon-presentation-card__id" >id: { id }</h3>
             <p className="pokemon-presentation-card__stat" >stat effort: { stats.map(stat => stat.effort) }</p>
-            <p className="pokemon-presentation-card__moves" >moves name: { moves.map(move => move.move.name) }</p>
+            {/* <p className="pokemon-presentation-card__moves" >moves name: { moves.map(move => move.move.name) }</p> */}
             <p className="pokemon-presentation-card__slot" >slot: { types.map(type => type.slot) }</p>
     </article>
 )
