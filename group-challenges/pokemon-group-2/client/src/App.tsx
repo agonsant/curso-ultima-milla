@@ -8,10 +8,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
-        <Route
-          path="/home"
-          element={<HomePage language={""} theme={false} />}
-        />
+        <Route path="/home" element={<HomePage language={""} theme={""} />} />
         <Route path="/arena" element={<ArenaPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

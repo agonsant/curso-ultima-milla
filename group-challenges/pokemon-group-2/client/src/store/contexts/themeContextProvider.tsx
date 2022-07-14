@@ -1,28 +1,19 @@
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import ThemeContext from "./themeContext";
 
 type ThemeProps = {
   children: React.ReactNode;
 };
 
-const ThemeContextProvider = ({ children }: ThemeProps): JSX.Element => {
-  const [currentTheme, setCurrentTheme] = useState(
-    window.localStorage.getItem("theme") === null
-      ? "light"
-      : window.localStorage.getItem("theme")
-  );
+const ThemeContextProvider: React.FC<ThemeProps> = ({ children }: any) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const themeSwitchHandler = (themeType: SetStateAction<string | null>) => {
-    setCurrentTheme(themeType);
+  const themeSwitchHandler = () => {
+    setIsDarkMode(!isDarkMode);
   };
 
   return (
-    <ThemeContext.Provider
-      value={{
-        currentTheme: currentTheme,
-        themeSwitchHandler: themeSwitchHandler,
-      }}
-    >
+    <ThemeContext.Provider value={{ isDarkMode, themeSwitchHandler }}>
       {children}
     </ThemeContext.Provider>
   );
