@@ -29,6 +29,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 name="userName"
                 autoComplete="off"
                 placeholder="Enter username"
+                required
             />
             </div>  
             <div className="home-page__languages home-page__item">
@@ -38,6 +39,7 @@ const HomePage: React.FC = (): JSX.Element => {
                 name="language"
                 autoComplete="off"
                 placeholder="Enter language"
+                required
             /> 
             </div>
             <div className="home-page__item">
