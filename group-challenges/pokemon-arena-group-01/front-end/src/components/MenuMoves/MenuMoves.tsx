@@ -1,4 +1,5 @@
 import "./MenuMoves.scss";
+
 const MenuMoves = ({pokemon}:any) => {
   return (
     <div className="menu-moves">
