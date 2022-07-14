@@ -1,16 +1,19 @@
+@import "../../styles/variables";
+
 .pokemon-presentation-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid 0.1rem black;
+    border: solid 0.1rem $text-color;
     border-radius: 1rem;
     box-shadow: rgb(50 50 93 / 25%) 0px 50px 100px -20px, rgb(0 0 0 / 30%) 0px 30px 60px -30px, rgb(10 37 64 / 35%) 0px -2px 6px 0px inset;
     padding: 1.5rem;
     margin: 1rem;
     min-height: 20rem;
     width: 90%;
-    background-color: rgb(236, 240, 244);
+    background-color: $card-background;
     justify-content: center;
+    color:$text-color;
 }
 
 .pokemon-presentation-card__image {
@@ -31,7 +34,7 @@
 }
 
 .pokemon-presentation-card__stat {
-    color: rgb(144, 101, 22);
+    color: $alt-color;
     font-size: 1.5rem;
 }
 
@@ -42,6 +45,6 @@
 }
 
 .pokemon-presentation-card__slot {
-    color: rgb(144, 101, 22);
+    color: $alt-color;
     font-size: 1.5rem;
 }
