@@ -9,14 +9,28 @@ const useAPI = () => {
     return pokemonData;
   }
 
-  const getPokemonImage = async (id:string) => {
+  const getPokemonName = async (id:string) => {
     const response = await (getPokemonData(id));
-    const pokemonImageUrl = response.sprites.other.dream_world.front_default;
-    return pokemonImageUrl;
+    const pokemonName = response.name;
+    return pokemonName;
+  }
+  
+  const getPokemonImageFront = async (id:string) => {
+    const response = await (getPokemonData(id));
+    const pokemonImageFrontUrl = response.sprites.other.dream_world.front_default;
+    return pokemonImageFrontUrl;
+  }
+
+  const getPokemonImageBack = async (id:string) => {
+    const response = await (getPokemonData(id));
+    const pokemonImageBackUrl = response.sprites.back_default;
+    return pokemonImageBackUrl;
   }
 
   return { 
-    getPokemonImage, 
+    getPokemonImageFront, 
+    getPokemonImageBack,
+    getPokemonName,
     getPokemonData
   }
 }
