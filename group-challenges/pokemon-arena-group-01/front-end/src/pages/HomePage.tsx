@@ -21,7 +21,7 @@ const HomePage: React.FC = (): JSX.Element => {
   };
     
   return (
-      <div className={`"home-page" ${isNightModeOn ? "background-night" : "background-light"}`}>
+      <div className={`"home-page" ${isNightModeOn ? "background-night text-night" : "background-light text-light"}`}>
         <h1 className="home-page__title"> Welcome to the Pokemon Game </h1>
         <form className="home-page__form" onSubmit={onSubmitData}>
             <div className="home-page__user home-page__item"> 
