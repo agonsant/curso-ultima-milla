@@ -35,6 +35,7 @@ const HomePage: React.FC<HomePageProps> = () => {
       <h1>Hello world - Homepage</h1>
       <StartOptions actionOnSubmit={onFormSubmit}></StartOptions>
       <PokemonCard />
+      <StartOptions language={language} theme={theme}></StartOptions>
     </>
   );
 };

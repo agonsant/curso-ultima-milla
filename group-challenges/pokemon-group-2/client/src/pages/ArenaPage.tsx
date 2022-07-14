@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import themeContextProvider from "../store/contexts/themeContextProvider";
+import PokemonCard from "../components/PokemonCard";
 
 const ArenaPage = () => {
   const { isDarkMode } = useContext(themeContextProvider as any);
@@ -15,6 +16,7 @@ const ArenaPage = () => {
         }`}
       ></StyledPageWrapper>
       <h1>Hello world - Arena Page</h1>
+      <PokemonCard/>
     </>
   );
 };
