@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { useContext } from "react";
-import ThemeContext from "../store/contexts/themeContext";
+import ThemeContext from "../store/contexts/themeContext/themeContext";
+import PokemonCard from "../components/PokemonCard";
+import PokemonCardArena from "../components/PokemonCardArena";
 
 const ArenaPage = () => {
   const values = useContext(ThemeContext);
-  console.log("context values", values);
 
   return (
     <>
@@ -16,6 +17,8 @@ const ArenaPage = () => {
               values.isDarkMode === true ? "night" : "light"
             }`}
           ></div>
+          <PokemonCard></PokemonCard>
+          <PokemonCardArena></PokemonCardArena>
         </StyledDivWrapper>
       </StyledPageWrapper>
     </>
