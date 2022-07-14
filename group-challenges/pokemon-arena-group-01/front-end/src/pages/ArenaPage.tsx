@@ -2,8 +2,10 @@ import { useState, useEffect, useContext} from 'react';
 import { UserContext } from '../store/context/userContext';
 
 import Loading from '../components/Loading';
+import Statistics from "../components/Statistics/Statistics";
 import getOneRandomPokemon from '../helpers/getOneRandomPokemon';
 import { RandomPokemon } from '../models/randomPokemon-model';
+import MenuMoves from '../components/MenuMoves/MenuMoves';
 
 
 const ArenaPage = () => {
@@ -56,6 +58,8 @@ const ArenaPage = () => {
                 <img src={randomPokemon.sprites.back_default} alt="Pokemon" />
             }
             <p>stat effort: { randomPokemon?.stats?.map(stat => stat.effort) }</p>
+            { <Statistics pokemon={randomPokemon} />}
+            { <MenuMoves pokemon={randomPokemon} />}
         </div>
 
         }
