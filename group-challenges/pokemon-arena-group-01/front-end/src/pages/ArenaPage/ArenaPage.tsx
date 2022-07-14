@@ -1,14 +1,13 @@
 import { useState, useEffect, useContext} from 'react';
-import { UserContext } from '../store/context/userContext';
+import { UserContext } from '../../store/context/userContext';
 
-import Loading from '../components/Loading';
-import getOneRandomPokemon from '../helpers/getOneRandomPokemon';
-import { RandomPokemon } from '../models/randomPokemon-model';
-import { ThemeContext } from '../store/context/ThemeContext';
+import Loading from '../../components/Loading';
+import getOneRandomPokemon from '../../helpers/getOneRandomPokemon';
+import { RandomPokemon } from '../../models/randomPokemon-model';
+import "./ArenaPage.scss";
 
 
 const ArenaPage = () => {
-    const {isNightModeOn} = useContext(ThemeContext);
     const user = useContext(UserContext);
     const [randomPokemon, setRandomPokemon] = useState<RandomPokemon>();
     const [isLoading, setLoading] = useState(false);
@@ -33,7 +32,7 @@ const ArenaPage = () => {
 
     return (
         <>
-        <div className={`"arena-page" ${isNightModeOn ? "background-night text-night" : "background-light text-light"}`}>
+        <div className="arena-page">
         <h2>Arena Page</h2>
            <p> Player's name: {user?.name} </p>
            <p> Game language: {user?.language} </p>
