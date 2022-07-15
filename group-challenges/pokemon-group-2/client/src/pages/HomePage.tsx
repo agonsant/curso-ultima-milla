@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, { useContext } from "react";
 import StartOptions from "../components/StartOptions";
 import { useNavigate } from "react-router-dom";
-import ThemeContext from "../store/contexts/themeContext";
+import ThemeContext from "../store/contexts/themeContext/themeContext";
 
 interface HomePageProps {
   language: string;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface IStartOptions {
-  actionOnSubmit: any;
+  actionOnSubmit: React.FormEventHandler<HTMLFormElement>;
 }
 
 const StartOptions: React.FC<IStartOptions> = ({ actionOnSubmit }) => {
