@@ -7,6 +7,7 @@ type ThemeProps = {
 };
 
 const PokemonContextProvider: React.FC<ThemeProps> = ({ children }: any) => {
+  const [pokemonId, setPokemonId] = useState("");
   const [pokemonName, setPokemonName] = useState("");
   const [pokemonHealth, setPokemonHealth] = useState(30);
   const [isPokemonA, setIsPokemonA] = useState(true);
@@ -18,12 +19,14 @@ const PokemonContextProvider: React.FC<ThemeProps> = ({ children }: any) => {
   };
 
   const setPokemonData = (
+    pokemonId: string,
     pokemonName: string,
     pokemonHealth: number,
     isPokemonA: boolean,
     pokemonImageFrontUrl: string,
     pokemonImageBackUrl: string
   ) => {
+    setPokemonId(pokemonId)
     setPokemonName(pokemonName);
     setPokemonHealth(pokemonHealth);
     setIsPokemonA(isPokemonA);
@@ -34,6 +37,7 @@ const PokemonContextProvider: React.FC<ThemeProps> = ({ children }: any) => {
   return (
     <PokemonContext.Provider
       value={{
+        pokemonId,
         pokemonName,
         pokemonHealth,
         isPokemonA,

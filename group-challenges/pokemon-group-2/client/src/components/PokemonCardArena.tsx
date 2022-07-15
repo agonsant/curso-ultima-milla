@@ -1,16 +1,22 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import useAPI from "../hooks/useAPI";
 import styled from "styled-components";
 import PokemonContext from "../store/contexts/pokemonContext/pokemonContext";
+import HealthBar from "./HealthBar";
 
-const PokemonCardArena = () => {
-  const pokeId = "21";
+interface IPokemonCardProps {
+  isPokemonA: boolean;
+}
+
+const PokemonCardArena: React.FC<IPokemonCardProps> = ({isPokemonA}) => {
+  // const randomId = Math.floor(Math.random() * 150 + 1).toString();
+  const pokeId = "45";
 
   const {
     setPokemonData,
+    pokemonId,
     pokemonName,
     pokemonHealth,
-    isPokemonA,
     pokemonImageFrontUrl,
     pokemonImageBackUrl,
   } = useContext(PokemonContext);
@@ -20,23 +26,26 @@ const PokemonCardArena = () => {
   const pokemonDataApi = async (id: string) => {
     const data = await getPokemonData(id);
     setPokemonData(
+      pokeId,
       data.name,
-      data.weight,
-      true,
+      data.stats[0.].base_stat,
+      isPokemonA,
       data.sprites.other.dream_world.front_default,
       data.sprites.back_default
     );
     return setPokemonData;
   };
 
-  pokemonDataApi(pokeId);
+  useEffect(() => {
+    pokemonDataApi(pokeId);
+  }, [])
+
 
   return (
     <>
       <CardContainer>
+      <HealthBar currentValue={pokemonHealth} maxValue={pokemonHealth} minValue={0} isEmpty={false}></HealthBar>
         <h2>{pokemonName}</h2>
-        <p>HP: {pokemonHealth}</p>
-
         <img
           alt={pokemonName}
           src={`${

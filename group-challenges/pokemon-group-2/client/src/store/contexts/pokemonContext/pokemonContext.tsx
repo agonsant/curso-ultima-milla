@@ -1,6 +1,7 @@
 import { createContext } from "react";
 
 interface IPokemonContext {
+  pokemonId: string;
   pokemonName: string;
   pokemonHealth: number;
   isPokemonA: boolean;
@@ -8,6 +9,7 @@ interface IPokemonContext {
   pokemonImageBackUrl: string;
   pokemonHealthDamage: (pokemonHealth: number) => void;
   setPokemonData: (
+    pokemonId: string,
     pokemonName: string,
     pokemonHealth: number,
     isPokemonA: boolean,
@@ -17,6 +19,7 @@ interface IPokemonContext {
 }
 
 const PokemonContext = createContext<IPokemonContext>({
+  pokemonId: "",
   pokemonName: "",
   pokemonHealth: 30,
   isPokemonA: true,
