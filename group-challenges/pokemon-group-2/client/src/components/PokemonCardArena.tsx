@@ -11,15 +11,19 @@ interface IPokemonCardProps {
 const PokemonCardArena: React.FC<IPokemonCardProps> = ({isPokemonA}) => {
   let pokeId: string;
 
-  const getPokeId = () => {
-    const pokeIdA = localStorage.getItem("PokeIdA");
-    if(pokeIdA) {
-      pokeId = pokeIdA;
+  const getPokeId = (AorB: string) => {
+    const pokeIdLocalStorage = localStorage.getItem(`PokeId${AorB}`);
+    if(pokeIdLocalStorage) {
+      pokeId = pokeIdLocalStorage;
       return pokeId;
     }
   } 
-
-  getPokeId();
+  
+  if(isPokemonA){
+    getPokeId("A");  //FIXME it's not working
+  } else {
+    getPokeId("B");
+  }
 
   const {
     setPokemonData,
