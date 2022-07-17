@@ -18,7 +18,7 @@ interface IPokemonContext {
   ) => void;
 }
 
-const PokemonContextA = createContext<IPokemonContext>({
+const PokemonContext = createContext<IPokemonContext>({
   pokemonId: "",
   pokemonName: "",
   pokemonHealth: 30,
@@ -29,18 +29,7 @@ const PokemonContextA = createContext<IPokemonContext>({
   setPokemonData: () => {},
 });
 
-const PokemonContextB = createContext<IPokemonContext>({
-  pokemonId: "",
-  pokemonName: "",
-  pokemonHealth: 30,
-  isPokemonA: true,
-  pokemonImageFrontUrl: "",
-  pokemonImageBackUrl: "",
-  pokemonHealthDamage: () => {},
-  setPokemonData: () => {},
-});
+PokemonContext.displayName = "Pokemon Context ";
 
-PokemonContextA.displayName = "Pokemon Context A";
-PokemonContextB.displayName = "Pokemon Context B";
 
-export default PokemonContextA;
+export default PokemonContext;

@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import useAPI from "../hooks/useAPI";
 import styled from "styled-components";
-import PokemonContextA from "../store/contexts/pokemonContext/pokemonContext";
+import PokemonContext from "../store/contexts/pokemonContext/pokemonContext";
 import HealthBar from "./HealthBar";
 
 interface IPokemonCardProps {
@@ -31,7 +31,7 @@ const PokemonCardArena: React.FC<IPokemonCardProps> = ({isPokemonA}) => {
     pokemonHealth,
     pokemonImageFrontUrl,
     pokemonImageBackUrl,
-  } = useContext(PokemonContextA);
+  } = useContext(PokemonContext);
 
   const { getPokemonData } = useAPI();
 
