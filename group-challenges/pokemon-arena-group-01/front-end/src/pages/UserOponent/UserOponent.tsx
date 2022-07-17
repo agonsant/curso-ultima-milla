@@ -1,12 +1,12 @@
 import { useState, useEffect, useContext} from 'react';
-import { ThemeContext } from '../store/context/ThemeContext';
-import { UserContext } from '../store/context/userContext';
+import { ThemeContext } from '../../store/context/ThemeContext';
+import { UserContext } from '../../store/context/userContext';
 
-import getOneRandomPokemon from '../helpers/getOneRandomPokemon';
-import { RandomPokemon } from '../models/randomPokemon-model';
+import getOneRandomPokemon from '../../helpers/getOneRandomPokemon';
+import { RandomPokemon } from '../../models/randomPokemon-model';
 
-import Loading from '../components/Loading/Loading';
-import PokemonPresentationCard from '../components/PokemonPresentationCard/PokemonPresentationCard';
+import Loading from '../../components/Loading/Loading';
+import PokemonPresentationCard from '../../components/PokemonPresentationCard/PokemonPresentationCard';
 
 import './UserOponent.scss';
 
@@ -73,7 +73,12 @@ const UserOponent: React.FC = (): JSX.Element => {
                 }
                 </section>
             </div>
-            <button type='submit'>Lets Figth!</button>
+            <button
+                type='submit'
+                className='user-oponent-page__button'
+                >
+                Lets Figth!
+            </button>
 
         </div>
     )

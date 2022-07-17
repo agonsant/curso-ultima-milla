@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage/HomePage';
-import UserOponent from './pages/UserOponent';
+import UserOponent from './pages/UserOponent/UserOponent';
 import ArenaPage from './pages/ArenaPage/ArenaPage';
 import RankingPage from './pages/RankingPage/RankingPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
