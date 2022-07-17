@@ -1,64 +1,41 @@
-import { useState, useEffect, useContext} from 'react';
+import { useState, useContext} from 'react';
 import { UserContext } from '../../store/context/userContext';
 
-import Loading from '../../components/Loading';
+import Loading from '../../components/Loading/Loading';
 import Statistics from "../../components/Statistics/Statistics";
-import getOneRandomPokemon from '../../helpers/getOneRandomPokemon';
-import { RandomPokemon } from '../../models/randomPokemon-model';
 import MenuMoves from '../../components/MenuMoves/MenuMoves';
 import "./ArenaPage.scss";
+import { RandomPokemonsContext } from '../../store/context/randomPokemonsContext';
 
 
 const ArenaPage = () => {
-    const user = useContext(UserContext);
-    const [randomPokemon, setRandomPokemon] = useState<RandomPokemon>();
-    const [isLoading, setLoading] = useState(false);
-
-    useEffect(() => {
-        setLoading(true);
-        getOneRandomPokemon()
-        .then((data) => {
-                setRandomPokemon(data);
-                setLoading(false);
-        });
-    }, []);
-
+    // const {
+    //     isLoading,
+    //     userRandomPokemon,
+    //     computerRandomPokemon, } = useContext(RandomPokemonsContext);
 
     return (
         <>
         <div className="arena-page">
         <h2>Arena Page</h2>
-           <p> Player's name: {user?.name} </p>
-           <p> Game language: {user?.language} </p>
+{/*
         {isLoading &&
             <Loading />
         }
-        {randomPokemon &&
+        {userRandomPokemon && computerRandomPokemon &&
         <div>
-            <h3>Play with: { randomPokemon.name.toUpperCase() }</h3>
-            <h3>id: { randomPokemon.id }</h3>
-            <p>moves name: { randomPokemon.moves.map(move => move.move.name) }</p>
-            <p>slot: { randomPokemon.types.map(type => type.slot) }</p>
-
-            {randomPokemon.sprites.front_default &&
-                <img src={randomPokemon.sprites.front_default} alt="Pokemon" />
-            }
-            {randomPokemon.sprites.back_default &&
-                <img src={randomPokemon.sprites.back_default} alt="Pokemon" />
-            }
-            <p>stat effort: { randomPokemon?.stats?.map(stat => stat.effort) }</p>
             <div className="arena">
               <div className="arena__players">
-              { <Statistics pokemon={randomPokemon} />}
-              { <Statistics pokemon={randomPokemon} />}
+              { <Statistics pokemon={userRandomPokemon} />}
+              { <Statistics pokemon={computerRandomPokemon} />}
               </div>
               { <MenuMoves
-                  pokemon={randomPokemon}
+                  pokemon={userRandomPokemon}
                   loading={isLoading}
                 />}
             </div>
         </div>
-        }
+        } */}
         </div>
         </>
     )

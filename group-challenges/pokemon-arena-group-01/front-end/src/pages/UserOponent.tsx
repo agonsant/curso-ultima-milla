@@ -5,8 +5,8 @@ import { UserContext } from '../store/context/userContext';
 import getOneRandomPokemon from '../helpers/getOneRandomPokemon';
 import { RandomPokemon } from '../models/randomPokemon-model';
 
-import Loading from '../components/Loading';
-import PokemonPresentationCard from '../components/PokemonPresentationCard';
+import Loading from '../components/Loading/Loading';
+import PokemonPresentationCard from '../components/PokemonPresentationCard/PokemonPresentationCard';
 
 import './UserOponent.scss';
 
@@ -14,6 +14,14 @@ const UserOponent: React.FC = (): JSX.Element => {
 
     const {isNightModeOn} = useContext(ThemeContext);
     const user = useContext(UserContext);
+
+    // const {
+    //     isLoading,
+    //     setLoading,
+    //     userRandomPokemon,
+    //     setUserRandomPokemon,
+    //     computerRandomPokemon,
+    //     setComputerRandomPokemon } = useContext(RandomPokemonsContext);
 
     const [userRandomPokemon, setUserRandomPokemon] = useState<RandomPokemon>();
     const [computerRandomPokemon, setComputerRandomPokemon] = useState<RandomPokemon>();
@@ -33,6 +41,9 @@ const UserOponent: React.FC = (): JSX.Element => {
             setLoading(false);
         });
     }, []);
+
+    console.log('userPokemon', userRandomPokemon)
+    console.log('computerPokemon', computerRandomPokemon)
 
     return (
         <div className={`user-oponent-page ${isNightModeOn ? "background-night" : "background-light"}`}>
