@@ -25,6 +25,9 @@ const HomePage: React.FC<HomePageProps> = () => {
       `Submited with ${form.language.value} and ${form.themeMode.value}`
     );
 
+    const randomId = Math.floor(Math.random() * 150 + 1).toString();
+    localStorage.setItem("PokeIdA", randomId);
+
     setTimeout(() => {
       navigate(`/arena`);
     }, 500);

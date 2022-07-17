@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import useAPI from "../hooks/useAPI";
 import styled from "styled-components";
-import PokemonContext from "../store/contexts/pokemonContext/pokemonContext";
+import PokemonContextA from "../store/contexts/pokemonContext/pokemonContext";
 import HealthBar from "./HealthBar";
 
 interface IPokemonCardProps {
@@ -9,17 +9,25 @@ interface IPokemonCardProps {
 }
 
 const PokemonCardArena: React.FC<IPokemonCardProps> = ({isPokemonA}) => {
-  // const randomId = Math.floor(Math.random() * 150 + 1).toString();
-  const pokeId = "45";
+  let pokeId: string;
+
+  const getPokeId = () => {
+    const pokeIdA = localStorage.getItem("PokeIdA");
+    if(pokeIdA) {
+      pokeId = pokeIdA;
+      return pokeId;
+    }
+  } 
+
+  getPokeId();
 
   const {
     setPokemonData,
-    pokemonId,
     pokemonName,
     pokemonHealth,
     pokemonImageFrontUrl,
     pokemonImageBackUrl,
-  } = useContext(PokemonContext);
+  } = useContext(PokemonContextA);
 
   const { getPokemonData } = useAPI();
 
