@@ -56,9 +56,9 @@ const PokemonCardArena: React.FC<IPokemonCardProps> = ({isPokemonA}) => {
   return (
     <>
       <CardContainer>
-      <HealthBar currentValue={pokemonHealth} maxValue={pokemonHealth} minValue={0} isEmpty={false}></HealthBar>
+        <HealthBar currentValue={pokemonHealth} maxValue={pokemonHealth} minValue={0} isEmpty={false}></HealthBar>
         <h2>{pokemonName}</h2>
-        <img
+        <PokeImage
           alt={pokemonName}
           src={`${
             isPokemonA ? `${pokemonImageFrontUrl}` : `${pokemonImageBackUrl}`
@@ -73,5 +73,12 @@ export default PokemonCardArena;
 
 const CardContainer = styled.div`
   border: 1px solid black;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
+
+const PokeImage = styled.img`
+  width: 220px;
+  margin: 10px 30px 30px 30px;
+`
