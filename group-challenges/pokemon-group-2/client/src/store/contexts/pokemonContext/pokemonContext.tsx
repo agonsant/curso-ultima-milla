@@ -31,5 +31,4 @@ const PokemonContext = createContext<IPokemonContext>({
 
 PokemonContext.displayName = "Pokemon Context";
 
-
 export default PokemonContext;
