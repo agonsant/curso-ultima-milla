@@ -29,7 +29,7 @@ const PokemonContext = createContext<IPokemonContext>({
   setPokemonData: () => {},
 });
 
-PokemonContext.displayName = "Pokemon Context ";
+PokemonContext.displayName = "Pokemon Context";
 
 
 export default PokemonContext;
