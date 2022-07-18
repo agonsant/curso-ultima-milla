@@ -13,7 +13,7 @@ const getOneRandomPokemon = async () => {
         const pokemonProperties = {
             name: response.name,
             id: response.id,
-            moves: await randomMoves(randomMovesId(response.moves, 4)),
+            moves: await randomMoves(randomMovesId(response.moves, 4)), // We want only 4 random moves
             types: response.types,
             stats: response.stats[0].base_stat,
             sprites: {

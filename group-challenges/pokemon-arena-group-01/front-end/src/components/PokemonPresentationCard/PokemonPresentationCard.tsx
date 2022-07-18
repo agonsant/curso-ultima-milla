@@ -15,10 +15,10 @@ const PokemonPresentationCard = (randomPokemon: RandomPokemon ) => {
                 <h3 className="pokemon-presentation-card__id" >PokeDex-Number: { randomPokemon?.id }</h3>
                 <p className="pokemon-presentation-card__stat" >stat effort: { randomPokemon?.stats }</p>
             {randomPokemon?.moves &&
-                <ul className="pokemon-presentation-card__moveList">available movements: { randomPokemon?.moves.map(move =>
+                <ul className="pokemon-presentation-card__moveList">available movements: { randomPokemon?.moves.map((move, index) =>
                     <li
                         className="moveList__item"
-                        key={randomPokemon?.id}>
+                        key={index}>
                             { move.name } - power: {move.power}
                     </li>
                 )}</ul>
