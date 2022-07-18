@@ -12,21 +12,9 @@ export type PokemonMove = {
     power: number,
 };
 
-export type PokemonMoveVersion = {
-    move_learn_method: {
-        name: string,
-        url: string,
-    },
-    version_group: {
-        name: string,
-        url: string,
-    },
-    level_learned_at: number,
-}
-
 export type PokemonSprites = {
-    back_default: string | null,
-    front_default: string | null,
+    back_default: string | undefined,
+    front_default: string | undefined,
 };
 
 export type PokemonType = {

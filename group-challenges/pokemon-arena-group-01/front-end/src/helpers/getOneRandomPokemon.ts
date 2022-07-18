@@ -2,7 +2,7 @@ import randomMovesId from './randomMovesId';
 import randomMoves from './randomMoves';
 
 const getOneRandomPokemon = async () => {
-    const randomPokemon = Math.floor(Math.random() * (1155 - 1) + 1); // Allow us to select a random number, from 1 to 1154
+    const randomPokemon = Math.floor(Math.random() * (900 - 1) + 1); // Allow us to select a random number, from 1 to 900
                                                                       // (max of Pokemons existents, for now).
 
     const apiURL = `https://pokeapi.co/api/v2/pokemon/${randomPokemon}`; // The random number it's used as id parameter
