@@ -1,26 +1,42 @@
+import { RandomPokemon } from "../../models/randomPokemon-model";
 import MenuMoves from "../MenuMoves/MenuMoves";
 import "./PlayerStatus.scss";
 
-const PlayerStatus = ({pokemon}:any) => {
+interface IPlayerStatusProps {
+  pokemon: RandomPokemon;
+  isComputer: boolean;
+}
 
+const PlayerStatus: React.FC<IPlayerStatusProps> = ({
+  pokemon,
+  isComputer,
+}) => {
   return (
     <div className="pokemon">
-      <div className="pokemon__info">
-        <p className="statistics__pokemon-name">{pokemon.name.toUpperCase()} </p>
-        <p className="statistics__pokemon-level"> Hp:  {pokemon.stats[0].base_stat} </p>
-        <progress id="health" value="100" max="100"> </progress>
-      </div>
-      <div className="pokemon__img">  
-        <img
-          src={pokemon.sprites.back_default}
-          alt={pokemon.name}
-        />
-      </div>
-      { <MenuMoves 
-          pokemon={pokemon}
-        />}
-    </div>    
-  )
+      {pokemon && (
+        <>
+          <div className="pokemon__info">
+            <p className="statistics__pokemon-name">
+              {pokemon.name.toUpperCase()}{" "}
+            </p>
+            <p className="statistics__pokemon-level"> Hp: {pokemon.stats} </p>
+            <progress id="health" value="100" max="100">
+              {" "}
+            </progress>
+          </div>
+          <div className="pokemon__img">
+            {isComputer && (
+              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+            )}
+            {!isComputer && (
+              <img src={pokemon.sprites.back_default} alt={pokemon.name} />
+            )}
+          </div>
+          {<MenuMoves pokemon={pokemon} />}
+        </>
+      )}
+    </div>
+  );
 };
 
 export default PlayerStatus;

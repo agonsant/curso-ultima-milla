@@ -5,9 +5,13 @@ import React from "react";
 export interface IUser {
   name: string;
   language: string;
-};
+}
 export interface IUserContext extends IUser {
-  setUser : (user:IUser) => void;
-};
+  setUser: (user: IUser) => void;
+}
 
-export const UserContext = React.createContext<IUserContext>({name:"", language:"", setUser:()=>{}});
+export const UserContext = React.createContext<IUserContext>({
+  name: "",
+  language: "",
+  setUser: () => {},
+});

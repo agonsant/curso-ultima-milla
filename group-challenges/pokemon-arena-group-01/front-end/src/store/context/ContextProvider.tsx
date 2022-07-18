@@ -1,16 +1,16 @@
 import { useState } from "react";
-import {ThemeContext} from "./ThemeContext";
+import { ThemeContext } from "./ThemeContext";
 
-const ContextProvider = ({children}:any)=>{
+const ContextProvider = ({ children }: any) => {
   const [isNightModeOn, setIsNightModeOn] = useState(true);
-  const toggleThemeMode = ()=> {
+  const toggleThemeMode = () => {
     setIsNightModeOn(!isNightModeOn);
-  }
-return (
-  <ThemeContext.Provider value={{isNightModeOn, toggleThemeMode}}>
-    {children}
-  </ThemeContext.Provider>
-);
+  };
+  return (
+    <ThemeContext.Provider value={{ isNightModeOn, toggleThemeMode }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
 export default ContextProvider;

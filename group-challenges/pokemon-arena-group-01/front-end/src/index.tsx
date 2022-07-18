@@ -1,22 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.scss';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.scss";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-import UserContextProvider from './store/context/userContextProvider';
-import ContextProvider from './store/context/ContextProvider';
+import UserContextProvider from "./store/context/userContextProvider";
+import ContextProvider from "./store/context/ContextProvider";
+import RandomPokemonsContextProvider from "./store/context/randomPokemonsContextProvider";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <ContextProvider>
+  // <React.StrictMode>
+  <ContextProvider>
     <UserContextProvider>
-      <App />
+      <RandomPokemonsContextProvider>
+        <App />
+      </RandomPokemonsContextProvider>
     </UserContextProvider>
-    </ContextProvider>
-  </React.StrictMode>
+  </ContextProvider>
+  // </React.StrictMode>
 );
 reportWebVitals();

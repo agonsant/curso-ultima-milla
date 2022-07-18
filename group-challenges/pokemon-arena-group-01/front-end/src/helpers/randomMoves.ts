@@ -9,6 +9,8 @@ const randomMoves = async (arrayIds: Array<number>) => {
             const move = {
                 name: response.name,
                 power: response.power === null ? 0 : response.power, // power could be null, in this case it's replaced by 0
+
+                //TODO add typeRelations y priority
             }
             randomMoves.push(move);
         } catch (error) {
