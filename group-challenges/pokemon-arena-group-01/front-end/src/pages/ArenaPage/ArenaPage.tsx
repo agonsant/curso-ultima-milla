@@ -1,11 +1,8 @@
-import { useState, useContext} from 'react';
-import { UserContext } from '../../store/context/userContext';
+import { useContext } from 'react';
 
-import Loading from '../../components/Loading/Loading';
-import Statistics from "../../components/Statistics/Statistics";
-import MenuMoves from '../../components/MenuMoves/MenuMoves';
+import PlayerStatus from '../../components/PlayerStatus/PlayerStatus';
 import "./ArenaPage.scss";
-import { RandomPokemonsContext } from '../../store/context/randomPokemonsContext';
+
 
 
 const ArenaPage = () => {
@@ -24,15 +21,11 @@ const ArenaPage = () => {
         }
         {userRandomPokemon && computerRandomPokemon &&
         <div>
-            <div className="arena">
+         <div className="arena">
               <div className="arena__players">
-              { <Statistics pokemon={userRandomPokemon} />}
-              { <Statistics pokemon={computerRandomPokemon} />}
+              { <PlayerStatus pokemon={randomPokemon} />}
+              { <PlayerStatus pokemon={randomPokemon} />}
               </div>
-              { <MenuMoves
-                  pokemon={userRandomPokemon}
-                  loading={isLoading}
-                />}
             </div>
         </div>
         } */}

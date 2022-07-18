@@ -1,4 +1,6 @@
 import { useState, useEffect, useContext} from 'react';
+import { useNavigate } from "react-router";
+
 import { ThemeContext } from '../../store/context/ThemeContext';
 import { UserContext } from '../../store/context/userContext';
 
@@ -10,7 +12,9 @@ import PokemonPresentationCard from '../../components/PokemonPresentationCard/Po
 
 import './UserOponent.scss';
 
+
 const UserOponent: React.FC = (): JSX.Element => {
+    const navigate=useNavigate();
 
     const {isNightModeOn} = useContext(ThemeContext);
     const user = useContext(UserContext);
@@ -44,6 +48,9 @@ const UserOponent: React.FC = (): JSX.Element => {
 
     console.log('userPokemon', userRandomPokemon)
     console.log('computerPokemon', computerRandomPokemon)
+    const playGame = () => {
+      navigate('/arena');
+    };
 
     return (
         <div className={`user-oponent-page ${isNightModeOn ? "background-night" : "background-light"}`}>
@@ -79,6 +86,7 @@ const UserOponent: React.FC = (): JSX.Element => {
                 >
                 Lets Figth!
             </button>
+            <button type='submit' onClick={playGame}>Lets Figth!</button>
 
         </div>
     )
