@@ -22,6 +22,4 @@ const getOneRandomPokemon = async () => {
     }
 };
 
-getOneRandomPokemon();
-
 export default getOneRandomPokemon;

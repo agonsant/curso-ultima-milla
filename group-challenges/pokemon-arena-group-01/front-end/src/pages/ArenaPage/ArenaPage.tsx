@@ -2,11 +2,10 @@ import { useState, useEffect, useContext} from 'react';
 import { UserContext } from '../../store/context/userContext';
 
 import Loading from '../../components/Loading';
-import Statistics from "../../components/Statistics/Statistics";
 import getOneRandomPokemon from '../../helpers/getOneRandomPokemon';
 import { RandomPokemon } from '../../models/randomPokemon-model';
-import MenuMoves from '../../components/MenuMoves/MenuMoves';
 import "./ArenaPage.scss";
+import PlayerStatus from '../../components/PlayerStatus/PlayerStatus';
 
 
 const ArenaPage = () => {
@@ -35,27 +34,11 @@ const ArenaPage = () => {
         }
         {randomPokemon &&
         <div>
-            <h3>Play with: { randomPokemon.name.toUpperCase() }</h3>
-            <h3>id: { randomPokemon.id }</h3>
-            <p>moves name: { randomPokemon.moves.map(move => move.move.name) }</p>
-            <p>slot: { randomPokemon.types.map(type => type.slot) }</p>
-
-            {randomPokemon.sprites.front_default &&
-                <img src={randomPokemon.sprites.front_default} alt="Pokemon" />
-            }
-            {randomPokemon.sprites.back_default &&
-                <img src={randomPokemon.sprites.back_default} alt="Pokemon" />
-            }
-            <p>stat effort: { randomPokemon?.stats?.map(stat => stat.effort) }</p>
-            <div className="arena">
+         <div className="arena">
               <div className="arena__players">
-              { <Statistics pokemon={randomPokemon} />}
-              { <Statistics pokemon={randomPokemon} />}
+              { <PlayerStatus pokemon={randomPokemon} />}
+              { <PlayerStatus pokemon={randomPokemon} />}
               </div>
-              { <MenuMoves
-                  pokemon={randomPokemon}
-                  loading={isLoading}
-                />}
             </div>
         </div>
         }

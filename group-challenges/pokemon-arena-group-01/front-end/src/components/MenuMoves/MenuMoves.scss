@@ -1,12 +1,11 @@
 .menu-moves {
-  width: 100%;  
-  height: 70px;  
+  width: 300px;  
+  height: 100%;  
   display: flex;
   border: 1px solid black;
 
   &__left {
-    width: 50%; 
-    text-align:justify;
+    width: 150px; 
     background-color: white;
   }  
 
@@ -17,7 +16,7 @@
 }
 
 .btn {
-  width: 130px;
+  width: 100px;
   height: 30px;
   margin: 3px;
   border-radius: 13px;

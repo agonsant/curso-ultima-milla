@@ -1,10 +1,14 @@
 .pokemon {
   display:flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
 
   &__info {
-    width: 200px;
+    width: 300px;
     height: 65px;  
+    color:black;
     background-color: blanchedalmond;
   }
 }
