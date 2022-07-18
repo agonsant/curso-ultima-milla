@@ -1,16 +1,17 @@
 import { useState, useEffect, useContext} from 'react';
+import { useNavigate } from "react-router";
+
 import { ThemeContext } from '../store/context/ThemeContext';
 import { UserContext } from '../store/context/userContext';
-
 import getOneRandomPokemon from '../helpers/getOneRandomPokemon';
 import { RandomPokemon } from '../models/randomPokemon-model';
-
 import Loading from '../components/Loading';
 import PokemonPresentationCard from '../components/PokemonPresentationCard';
-
 import './UserOponent.scss';
 
+
 const UserOponent: React.FC = (): JSX.Element => {
+    const navigate=useNavigate();
 
     const {isNightModeOn} = useContext(ThemeContext);
     const user = useContext(UserContext);
@@ -33,6 +34,10 @@ const UserOponent: React.FC = (): JSX.Element => {
             setLoading(false);
         });
     }, []);
+
+    const playGame = () => {
+      navigate('/arena');
+    };
 
     return (
         <div className={`user-oponent-page ${isNightModeOn ? "background-night" : "background-light"}`}>
@@ -62,7 +67,7 @@ const UserOponent: React.FC = (): JSX.Element => {
                 }
                 </section>
             </div>
-            <button type='submit'>Lets Figth!</button>
+            <button type='submit' onClick={playGame}>Lets Figth!</button>
 
         </div>
     )

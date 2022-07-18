@@ -1,16 +1,13 @@
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from "react";
-import "./Statistics.scss";
+import MenuMoves from "../MenuMoves/MenuMoves";
+import "./PlayerStatus.scss";
 
-const Statistics = ({pokemon, isLoading}:any) => {
-  console.log(pokemon);
-  let maxHealth = pokemon.stats[0].base_stat;
-  let health = document.getElementById("health");
-  // health.value -= 10;
+const PlayerStatus = ({pokemon}:any) => {
+
   return (
     <div className="pokemon">
       <div className="pokemon__info">
         <p className="statistics__pokemon-name">{pokemon.name} </p>
-        <p className="statistics__pokemon-level"> Hp:  </p>
+        <p className="statistics__pokemon-level"> Hp:  {pokemon.stats[0].base_stat} </p>
         <progress id="health" value="100" max="100"> </progress>
       </div>
       <div className="pokemon__img">  
@@ -19,8 +16,11 @@ const Statistics = ({pokemon, isLoading}:any) => {
           alt={pokemon.name}
         />
       </div>
+      { <MenuMoves 
+          pokemon={pokemon}
+        />}
     </div>    
   )
 };
 
-export default Statistics;
+export default PlayerStatus;
