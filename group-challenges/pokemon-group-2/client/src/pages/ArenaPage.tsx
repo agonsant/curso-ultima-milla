@@ -2,9 +2,14 @@ import styled from "styled-components";
 import { useContext } from "react";
 import ThemeContext from "../store/contexts/themeContext/themeContext";
 import PokemonCardArena from "../components/PokemonCardArena";
+import PokemonContext from "../store/contexts/pokemonContext/pokemonContext";
 
 const ArenaPage = () => {
   const values = useContext(ThemeContext);
+  const {
+    pokemonA,
+    pokemonB
+  } = useContext(PokemonContext);
 
   return (
     <>
@@ -17,11 +22,11 @@ const ArenaPage = () => {
             }`}>
             
             <section className="arena-page__stadium--player--a">
-              <PokemonCardArena isPokemonA={true}></PokemonCardArena>
+              <PokemonCardArena pokemon={pokemonA} isPokemonA={true}></PokemonCardArena>
             </section>
             
             <section className="arena-page__stadium--player--b">
-              <PokemonCardArena isPokemonA={false}></PokemonCardArena>
+              <PokemonCardArena pokemon={pokemonB} isPokemonA={false}></PokemonCardArena>
             </section>
         </StyledDivWrapper>
       </StyledPageWrapper>

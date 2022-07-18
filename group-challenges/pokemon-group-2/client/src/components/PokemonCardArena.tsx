@@ -1,68 +1,23 @@
-import { useContext, useEffect } from "react";
-import useAPI from "../hooks/useAPI";
 import styled from "styled-components";
-import PokemonContext from "../store/contexts/pokemonContext/pokemonContext";
 import HealthBar from "./HealthBar";
+import { IPokemon } from "../types/pokemon.model";
 
 interface IPokemonCardProps {
+  pokemon: IPokemon;
   isPokemonA: boolean;
 }
 
-const PokemonCardArena: React.FC<IPokemonCardProps> = ({isPokemonA}) => {
-  let pokeId: string;
-
-  const getPokeId = (AorB: string) => {
-    const pokeIdLocalStorage = localStorage.getItem(`PokeId${AorB}`);
-    if(pokeIdLocalStorage) {
-      pokeId = pokeIdLocalStorage;
-      return pokeId;
-    }
-  } 
-  
-  if(isPokemonA){
-    getPokeId("A");  //FIXME it's not working
-  } else {
-    getPokeId("B");
-  }
-
-  const {
-    setPokemonData,
-    pokemonName,
-    pokemonHealth,
-    pokemonImageFrontUrl,
-    pokemonImageBackUrl,
-  } = useContext(PokemonContext);
-
-  const { getPokemonData } = useAPI();
-
-  const pokemonDataApi = async (id: string) => {
-    const data = await getPokemonData(id);
-    setPokemonData(
-      pokeId,
-      data.name,
-      data.stats[0.].base_stat,
-      isPokemonA,
-      data.sprites.other.dream_world.front_default,
-      data.sprites.back_default
-    );
-    return setPokemonData;
-  };
-
-  useEffect(() => {
-    pokemonDataApi(pokeId);
-  }, [])
-
-
+const PokemonCardArena: React.FC<IPokemonCardProps> = ({pokemon, isPokemonA}) => {
   return (
     <>
       <CardContainer>
-        <HealthBar currentValue={pokemonHealth} maxValue={pokemonHealth} minValue={0} isEmpty={false}></HealthBar>
-        <h2>{pokemonName}</h2>
+        <HealthBar currentValue={pokemon.stat} maxValue={pokemon.stat} minValue={0} isEmpty={false}></HealthBar>
+        <h2>{pokemon.name}</h2>
         <PokeImage
-          alt={pokemonName}
-          src={`${
-            isPokemonA ? `${pokemonImageFrontUrl}` : `${pokemonImageBackUrl}`
-          }`}
+          alt={pokemon.name}
+          src={
+            isPokemonA ? pokemon.images.front : pokemon.images.back
+          }
         />
       </CardContainer>
     </>
