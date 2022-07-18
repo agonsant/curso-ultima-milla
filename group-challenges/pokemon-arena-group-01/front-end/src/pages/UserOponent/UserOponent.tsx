@@ -82,12 +82,11 @@ const UserOponent: React.FC = (): JSX.Element => {
             </div>
             <button
                 type='submit'
+                onClick={playGame}
                 className='user-oponent-page__button'
-                >
+            >
                 Lets Figth!
             </button>
-            <button type='submit' onClick={playGame}>Lets Figth!</button>
-
         </div>
     )
 }
