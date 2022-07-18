@@ -1,9 +1,11 @@
+@import "../../../styles/variables";
+
 .user-oponent-page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
-    margin: 2rem;
+    width: 100%;
+    height: auto;
 }
 
 .user-oponent-page__title {
@@ -38,4 +40,12 @@
 
 .info__pokemon{
     font-size: 2.5rem;
+}
+
+.user-oponent-page__button {
+    width: 15rem;
+    margin: 3rem;
+    border-radius: 2.5rem;
+    font-size: 2rem;
+    background-color: $alt-color;
 }

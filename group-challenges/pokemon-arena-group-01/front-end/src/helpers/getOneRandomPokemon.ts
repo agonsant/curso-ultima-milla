@@ -1,3 +1,6 @@
+import randomMovesId from './randomMovesId';
+import randomMoves from './randomMoves';
+
 const getOneRandomPokemon = async () => {
     const randomPokemon = Math.floor(Math.random() * (1155 - 1) + 1); // Allow us to select a random number, from 1 to 1154
                                                                       // (max of Pokemons existents, for now).
@@ -10,15 +13,17 @@ const getOneRandomPokemon = async () => {
         const pokemonProperties = {
             name: response.name,
             id: response.id,
-            moves: response.moves,
+            moves: await randomMoves(randomMovesId(response.moves, 4)),
             types: response.types,
-            stats: response.stats,
-            sprites: response.sprites,
-        }
-        console.log(pokemonProperties);
+            stats: response.stats[0].base_stat,
+            sprites: {
+                back_default: response.sprites.back_default,
+                front_default: response.sprites.front_default,
+            },
+        };
         return pokemonProperties;
     } catch (error) {
-        throw new Error("404 - Pokemon Random Not Found");
+        throw new Error('There is not pokemon');
     }
 };
 

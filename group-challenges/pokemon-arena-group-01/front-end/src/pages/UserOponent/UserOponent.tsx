@@ -1,12 +1,15 @@
 import { useState, useEffect, useContext} from 'react';
 import { useNavigate } from "react-router";
 
-import { ThemeContext } from '../store/context/ThemeContext';
-import { UserContext } from '../store/context/userContext';
-import getOneRandomPokemon from '../helpers/getOneRandomPokemon';
-import { RandomPokemon } from '../models/randomPokemon-model';
-import Loading from '../components/Loading';
-import PokemonPresentationCard from '../components/PokemonPresentationCard';
+import { ThemeContext } from '../../store/context/ThemeContext';
+import { UserContext } from '../../store/context/userContext';
+
+import getOneRandomPokemon from '../../helpers/getOneRandomPokemon';
+import { RandomPokemon } from '../../models/randomPokemon-model';
+
+import Loading from '../../components/Loading/Loading';
+import PokemonPresentationCard from '../../components/PokemonPresentationCard/PokemonPresentationCard';
+
 import './UserOponent.scss';
 
 
@@ -15,6 +18,14 @@ const UserOponent: React.FC = (): JSX.Element => {
 
     const {isNightModeOn} = useContext(ThemeContext);
     const user = useContext(UserContext);
+
+    // const {
+    //     isLoading,
+    //     setLoading,
+    //     userRandomPokemon,
+    //     setUserRandomPokemon,
+    //     computerRandomPokemon,
+    //     setComputerRandomPokemon } = useContext(RandomPokemonsContext);
 
     const [userRandomPokemon, setUserRandomPokemon] = useState<RandomPokemon>();
     const [computerRandomPokemon, setComputerRandomPokemon] = useState<RandomPokemon>();
@@ -35,6 +46,8 @@ const UserOponent: React.FC = (): JSX.Element => {
         });
     }, []);
 
+    console.log('userPokemon', userRandomPokemon)
+    console.log('computerPokemon', computerRandomPokemon)
     const playGame = () => {
       navigate('/arena');
     };
@@ -67,6 +80,12 @@ const UserOponent: React.FC = (): JSX.Element => {
                 }
                 </section>
             </div>
+            <button
+                type='submit'
+                className='user-oponent-page__button'
+                >
+                Lets Figth!
+            </button>
             <button type='submit' onClick={playGame}>Lets Figth!</button>
 
         </div>
