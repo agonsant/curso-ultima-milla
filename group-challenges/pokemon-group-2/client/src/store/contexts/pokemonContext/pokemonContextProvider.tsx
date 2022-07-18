@@ -1,51 +1,46 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAPI from "../../../hooks/useAPI";
 import PokemonContext from "./pokemonContext";
 
-type ThemeProps = {
+type PokemonProps = {
   children: React.ReactNode;
 };
 
-const PokemonContextProvider: React.FC<ThemeProps> = ({ children }: any) => {
-  const [pokemonId, setPokemonId] = useState("");
-  const [pokemonName, setPokemonName] = useState("");
-  const [pokemonHealth, setPokemonHealth] = useState(30);
-  const [isPokemonA, setIsPokemonA] = useState(true);
-  const [pokemonImageFrontUrl, setPokemonImageFrontUrl] = useState("");
-  const [pokemonImageBackUrl, setPokemonImageBackUrl] = useState("");
+const PokemonContextProvider: React.FC<PokemonProps> = ({ children }: any) => {
+  const [pokemonA, setPokemonA] = useState({
+    name: "",
+    id: "",
+    stat: 0,
+    images: {
+      front: "",
+      back: ""
+    },
+    moves: []
+  });
+  const [pokemonB, setPokemonB] = useState({
+    name: "",
+    id: "",
+    stat: 0,
+    images: {
+      front: "",
+      back: ""
+    },
+    moves: []
+  });
 
-  const pokemonHealthDamage = (damage: number) => {
-    setPokemonHealth(pokemonHealth - damage);
-  };
+  const {getOnePokemonData} = useAPI();
 
-  const setPokemonData = (
-    pokemonId: string,
-    pokemonName: string,
-    pokemonHealth: number,
-    isPokemonA: boolean,
-    pokemonImageFrontUrl: string,
-    pokemonImageBackUrl: string
-  ) => {
-    setPokemonId(pokemonId)
-    setPokemonName(pokemonName);
-    setPokemonHealth(pokemonHealth);
-    setIsPokemonA(isPokemonA);
-    setPokemonImageFrontUrl(pokemonImageFrontUrl);
-    setPokemonImageBackUrl(pokemonImageBackUrl);
-  };
+  useEffect(() => {
+    const randomIdA = Math.floor(Math.random() * 150 + 1).toString();
+    const randomIdB = Math.floor(Math.random() * 150 + 1).toString();
+    getOnePokemonData(randomIdA).then(pokemon => setPokemonA(pokemon));
+    getOnePokemonData(randomIdB).then(pokemon => setPokemonB(pokemon));
+  },[])
 
   return (
     <PokemonContext.Provider
-      value={{
-        pokemonId,
-        pokemonName,
-        pokemonHealth,
-        isPokemonA,
-        pokemonImageFrontUrl,
-        pokemonImageBackUrl,
-        pokemonHealthDamage,
-        setPokemonData,
-      }}
+      value={{ pokemonA, pokemonB}}
     >
       {children}
     </PokemonContext.Provider>
