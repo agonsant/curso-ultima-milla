@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 import "./MenuMoves.scss";
 
-const MenuMoves = ({pokemon}:any) => {
+const MenuMoves = ({ pokemon }: any) => {
   const navigate = useNavigate();
   const [inFightingMode, setInFightingMode] = useState(false);
   const attacks = pokemon.moves;
@@ -16,36 +16,29 @@ const MenuMoves = ({pokemon}:any) => {
   };
 
   const runAway = () => {
-    navigate('/');
+    navigate("/");
   };
 
   return (
     <>
-      { inFightingMode 
-        ? 
-        <div className="menu-attacks"> 
-          <p> List types of attack </p> 
-          <ul> 
-            { attacks.map( (move: { name: string, url: string }, index: any) =>
-                <li 
-                  key={index} 
-                  className="btn menu-attacks__item"> 
-                    { move.name} 
-                </li>
-              ) 
-            }
+      {inFightingMode ? (
+        <div className="menu-attacks">
+          <p> List types of attack </p>
+          <ul>
+            {attacks.map((move: { name: string; url: string }, index: any) => (
+              <li key={index} className="btn menu-attacks__item">
+                {move.name}
+              </li>
+            ))}
           </ul>
-        </div> 
-        : 
+        </div>
+      ) : (
         <div className="menu-moves">
           <div className="menu-moves__left">
             <p>What should #{pokemon.name} do?</p>
           </div>
           <div className="menu-moves__right">
-            <button 
-              className="btn btn--fight"
-              onClick={chooseAttack}
-            >
+            <button className="btn btn--fight" onClick={chooseAttack}>
               FIGHT
             </button>
             <div className="btn btn--bag">
@@ -54,17 +47,14 @@ const MenuMoves = ({pokemon}:any) => {
             <div className="btn btn--pokemon">
               <p>POKéMON</p>
             </div>
-            <button 
-              className="btn btn--run"
-              onClick={runAway}
-            >
+            <button className="btn btn--run" onClick={runAway}>
               RUN
             </button>
           </div>
-        </div> 
-    }
+        </div>
+      )}
     </>
-  )
+  );
 };
 
 export default MenuMoves;
