@@ -9,7 +9,11 @@ export type RandomPokemon = {
 
 export type PokemonMove = {
     name: string,
+    id: number,
     power: number,
+    priority: number,
+    typeName: string,
+    damage_relations: PokemonDamageRelations,
 };
 
 export type PokemonSprites = {
@@ -24,3 +28,12 @@ export type PokemonType = {
         url: string,
     }
 };
+
+export type PokemonDamageRelations = {
+    double_damage_from: Array<string>;
+    double_damage_to: Array<string>;
+    half_damage_from: Array<string>;
+    half_damage_to: Array<string>;
+    no_damage_from: Array<string>;
+    no_damage_to: Array<string>;
+}

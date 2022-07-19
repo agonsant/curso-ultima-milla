@@ -1,4 +1,5 @@
 import { PokemonMove } from '../models/randomPokemon-model';
+import getDamageRelations from './getDamageRelations';
 
 const randomMoves = async (arrayIds: Array<number>) => {
     const randomMoves: Array<PokemonMove> = [];
@@ -8,10 +9,13 @@ const randomMoves = async (arrayIds: Array<number>) => {
         try {
             const move = {
                 name: response.name,
+                id: response.id,
                 power: response.power === null ? 0 : response.power, // power could be null, in this case it's replaced by 0
-
-                //TODO add typeRelations y priority
+                priority: response.priority,
+                typeName: response.type.name,
+                damage_relations: await getDamageRelations(response.id),
             }
+            console.log('move', move)
             randomMoves.push(move);
         } catch (error) {
             throw new Error('There are not moves');
