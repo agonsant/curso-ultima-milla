@@ -27,7 +27,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/useroponent" element={<UserOponent />} />
           <Route path="/arena" element={<ArenaPage />} />
-          <Route path="/ranking" element={<RankingPage />} />
+          <Route path="/ranking/:name" element={<RankingPage />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

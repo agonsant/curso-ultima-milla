@@ -16,7 +16,6 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
   opponent,
   isComputer,
 }) => {
-
   const navigate = useNavigate();
 
   const maxOpponentHealth = opponent?.stats;
@@ -24,26 +23,28 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
   const attacks = pokemon?.moves;
   const healthBar = document.getElementById('health') as HTMLDivElement;
 
-  const chooseAttack = (e:any) => {
+  const chooseAttack = (move:PokemonMove) => () => {
     if (typeof maxOpponentHealth !== 'undefined' && typeof opponentHealth !== "undefined" && healthBar !== null) {
-      const powerAttack = e.target.innerHTML.split(',')[1];
-      // const priority = e.target.innerHTML.split(',')[2];
+      const powerAttack = move.power;
 
       const newOpponentHealth = opponentHealth - powerAttack; 
       const newHealthPercentage = (newOpponentHealth/ maxOpponentHealth) *100;
       setOpponentHealth(newOpponentHealth);
       healthBar.style.width=`${newHealthPercentage}%`;
+
       console.log(newOpponentHealth);
       console.log(newHealthPercentage);
+
       if ( newHealthPercentage < 1) {
-        console.log("You won");
+        console.log(`${pokemon?.name} won`);
+        navigate(`/ranking/${pokemon?.name}`);
       }
     }
   };
 
-  const runAway = () => {
-    navigate("/");
-  };
+  // const runAway = () => {
+  //   navigate("/");
+  // };
 
   return (
     <div className="pokemon">
@@ -54,9 +55,7 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
               {pokemon.name.toUpperCase()}{" "}
             </p>
             <p className="statistics__pokemon-maxHealth"> Max health: {pokemon.stats} </p>
-            <div id="health">
-              <div id="health-bar"></div>
-            </div>
+            <div id="health"> </div>
           </div>
           <div className="pokemon__img">
             {isComputer && (
@@ -71,16 +70,16 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
               <ul className="pokemon__attacks-list">
                 {attacks?.map((move: PokemonMove, index: number) => (
                   <li key={index} className="btn pokemon__item">
-                    <button className="btn" onClick={ e => chooseAttack(e)}>
-                      {move.name}, 
+                    <button className="btn" onClick={chooseAttack(move)}>
+                      <p> Name: {move.name} </p> 
                       {move.power} 
                     </button>
                   </li>
                 ))}
               </ul>
-              <button className="btn btn--run" onClick={runAway}>
+              {/* <button className="btn btn--run" onClick={runAway}>
                 RUN
-              </button>
+              </button> */}
             </div>
           </div>
         </>
