@@ -20,16 +20,17 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
 
   const maxOpponentHealth = opponent?.stats;
   const [opponentHealth, setOpponentHealth] = useState(maxOpponentHealth);
+
   const attacks = pokemon?.moves;
-  const healthBar = document.getElementById('health') as HTMLDivElement;
+  const healthBar = document.querySelector('.opponent-health') as HTMLDivElement;
 
   const chooseAttack = (move:PokemonMove) => () => {
     if (typeof maxOpponentHealth !== 'undefined' && typeof opponentHealth !== "undefined" && healthBar !== null) {
       const powerAttack = move.power;
 
       const newOpponentHealth = opponentHealth - powerAttack; 
-      const newHealthPercentage = (newOpponentHealth/ maxOpponentHealth) *100;
       setOpponentHealth(newOpponentHealth);
+      const newHealthPercentage = (newOpponentHealth/ maxOpponentHealth) *100;
       healthBar.style.width=`${newHealthPercentage}%`;
 
       console.log(newOpponentHealth);
@@ -42,20 +43,16 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
     }
   };
 
-  // const runAway = () => {
-  //   navigate("/");
-  // };
-
   return (
     <div className="pokemon">
       {pokemon && (
         <>
           <div className="pokemon__info">
-            <p className="statistics__pokemon-name">
+            <p className="pokemon__name">
               {pokemon.name.toUpperCase()}{" "}
             </p>
-            <p className="statistics__pokemon-maxHealth"> Max health: {pokemon.stats} </p>
-            <div id="health"> </div>
+            <p className="pokemon__maxHealth"> Max health: {pokemon.stats} </p>
+            <div id="health" className="opponent-health"> </div>
           </div>
           <div className="pokemon__img">
             {isComputer && (
@@ -69,17 +66,14 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
             <div className="pokemon__right">
               <ul className="pokemon__attacks-list">
                 {attacks?.map((move: PokemonMove, index: number) => (
-                  <li key={index} className="btn pokemon__item">
+                  <li key={index} className="pokemon__item">
                     <button className="btn" onClick={chooseAttack(move)}>
                       <p> Name: {move.name} </p> 
-                      {move.power} 
+                      <p> Power: {move.power} </p> 
                     </button>
                   </li>
                 ))}
               </ul>
-              {/* <button className="btn btn--run" onClick={runAway}>
-                RUN
-              </button> */}
             </div>
           </div>
         </>
