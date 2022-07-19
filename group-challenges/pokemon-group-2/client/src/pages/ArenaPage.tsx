@@ -1,34 +1,45 @@
 import styled from "styled-components";
-import { useContext } from "react";
 import ThemeContext from "../store/contexts/themeContext/themeContext";
-import PokemonCardArena from "../components/PokemonCardArena";
+import { useContext } from "react";
 import PokemonContext from "../store/contexts/pokemonContext/pokemonContext";
+import PokemonCardArena from "../components/PokemonCardArena";
 
 const ArenaPage = () => {
   const values = useContext(ThemeContext);
-  const {
-    pokemonA,
-    pokemonB
-  } = useContext(PokemonContext);
+  const { pokemonA, pokemonB } = useContext(PokemonContext);
 
   return (
     <>
-      <StyledPageWrapper>
-        <h1>Hello world - Arena Page</h1>
+      <h1>Hello world - Arena Page</h1>
+      <StyledPageWrapper
+        className={`arena-page__background--${
+          values.isDarkMode ? "night" : "light"
+        }`}
+      >
+        <section className="arena-page__stadium--player--a">
+          <PokemonCardArena
+            pokemon={pokemonA}
+            isPokemonA={true}
+          ></PokemonCardArena>
+        </section>
 
-        <StyledDivWrapper
-            className={`arena-page__background--${
-              values.isDarkMode === true ? "night" : "light"
-            }`}>
-            
-            <section className="arena-page__stadium--player--a">
-              <PokemonCardArena pokemon={pokemonA} isPokemonA={true}></PokemonCardArena>
-            </section>
-            
-            <section className="arena-page__stadium--player--b">
-              <PokemonCardArena pokemon={pokemonB} isPokemonA={false}></PokemonCardArena>
-            </section>
-        </StyledDivWrapper>
+        <section className="arena-page__stadium--player--b">
+          <PokemonCardArena
+            pokemon={pokemonB}
+            isPokemonA={false}
+          ></PokemonCardArena>
+
+          <p>Attacks:</p>
+          <ul>
+            {pokemonB.moves.map(
+              (movement, index: any): JSX.Element => (
+                <li key={index} className="arena-page__menu-attacks__item">
+                  {movement.move.name}
+                </li>
+              )
+            )}
+          </ul>
+        </section>
       </StyledPageWrapper>
     </>
   );
@@ -36,39 +47,30 @@ const ArenaPage = () => {
 
 export default ArenaPage;
 
-const StyledPageWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-  padding: 0 2rem;
-
-  .arena-page__stadium--player {
-    display: flex;
-    
-    &--a {
-    align-items: flex-start;
-    background-color: grey;
-    }
-    
-    &--b {
-    align-items: flex-end;
-    background-color: yellow;
-    }
-  }
-`;
-
-const StyledDivWrapper = styled.div`
+const StyledPageWrapper = styled.section`
   .arena-page__background--night {
-    color: #fff;
-    background-color: #333232;
-    width: 100vw;
-    height: 100vh;
+    background-color: #353232;
+    min-width: 100vw;
+    height: auto;
   }
   .arena-page__background--light {
-    color: #000;
     background-color: #e5e5e5;
-    width: 100vw;
-    height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+  }
+  .arena-page__stadium--player {
+    display: flex;
+    &-- {
+      // background-color: blue;
+    }
+    &--b {
+      // background-color: green;
+    }
+  }
+  .arena-page__menu-attacks__item {
+    width: 300px;
+    height: 100%;
+    display: flex;
+    border: 1px solid black;
   }
 `;
