@@ -24,7 +24,7 @@ const HomePage: React.FC<HomePageProps> = () => {
     console.log(
       `Submited with ${form.language.value} and ${form.themeMode.value}`
     );
-
+   
     setTimeout(() => {
       navigate(`/arena`);
     }, 500);

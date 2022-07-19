@@ -1,40 +1,42 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+
+import { useContext } from "react";
+import PokemonContext from "../store/contexts/pokemonContext/pokemonContext";
+
 /* eslint-disable @typescript-eslint/no-unused-expressions */
+
 const useAPI = () => {
   const getPokemonDataUrl = (id: string) =>
     // `${process.env.REACT_APP_API_POKEMON}pokemon/${id}`;
     `https://pokeapi.co/api/v2/pokemon/${id}`;
 
-  const getPokemonData = async (id: string) => {
+  const getOnePokemonData = async (id: string) => {
     const response = await fetch(getPokemonDataUrl(id));
     const pokemonData = await response.json();
-    return pokemonData;
+    const pokeObject = {
+      name: pokemonData.name,
+      id: pokemonData.id,
+      stat: pokemonData.stats[0].base_stat,
+      images: {
+        front: pokemonData.sprites.other.dream_world.front_default,
+        back: pokemonData.sprites.back_default,
+      },
+      moves: pokemonData.moves.slice(0, 4),
+    };
+    return pokeObject;
   };
 
-  const getPokemonName = async (id: string) => {
-    const response = await getPokemonData(id);
-    const pokemonName = response.name;
-    return pokemonName;
-  };
-
-  const getPokemonImageFront = async (id: string) => {
-    const response = await getPokemonData(id);
-    const pokemonImageFrontUrl =
-      response.sprites.other.dream_world.front_default;
-    return pokemonImageFrontUrl;
-  };
-
-  const getPokemonImageBack = async (id: string) => {
-    const response = await getPokemonData(id);
-    const pokemonImageBackUrl = response.sprites.back_default;
-    return pokemonImageBackUrl;
+  const getPokemonAttackDamage = async (url: string) => {
+    const response = await fetch(`${url}`);
+    const attack = await response.json();
+    const powerDamage = attack.power;
+    console.log("powerDamage", powerDamage);
+    return powerDamage;
   };
 
   return {
-    getPokemonImageFront,
-    getPokemonImageBack,
-    getPokemonName,
-    getPokemonData,
+    getOnePokemonData,
+    getPokemonAttackDamage,
   };
 };
 

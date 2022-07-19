@@ -1,29 +1,32 @@
 import { createContext } from "react";
+import { IPokemon } from "../../../types/pokemon.model";
 
 interface IPokemonContext {
-  pokemonName: string;
-  pokemonHealth: number;
-  isPokemonA: boolean;
-  pokemonImageFrontUrl: string;
-  pokemonImageBackUrl: string;
-  pokemonHealthDamage: (pokemonHealth: number) => void;
-  setPokemonData: (
-    pokemonName: string,
-    pokemonHealth: number,
-    isPokemonA: boolean,
-    pokemonImageFrontUrl: string,
-    pokemonImageBackUrl: string
-  ) => void;
+  pokemonA: IPokemon;
+  pokemonB: IPokemon;
 }
 
 const PokemonContext = createContext<IPokemonContext>({
-  pokemonName: "",
-  pokemonHealth: 30,
-  isPokemonA: true,
-  pokemonImageFrontUrl: "",
-  pokemonImageBackUrl: "",
-  pokemonHealthDamage: () => {},
-  setPokemonData: () => {},
+  pokemonA: {
+    name: "",
+    id: "",
+    stat: 0,
+    images: {
+      front: "",
+      back: "",
+    },
+    moves: [],
+  },
+  pokemonB: {
+    name: "",
+    id: "",
+    stat: 0,
+    images: {
+      front: "",
+      back: "",
+    },
+    moves: [],
+  },
 });
 
 PokemonContext.displayName = "Pokemon Context";

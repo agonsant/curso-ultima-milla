@@ -1,48 +1,62 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAPI from "../../../hooks/useAPI";
 import PokemonContext from "./pokemonContext";
 
-type ThemeProps = {
+type PokemonProps = {
   children: React.ReactNode;
 };
 
-const PokemonContextProvider: React.FC<ThemeProps> = ({ children }: any) => {
-  const [pokemonName, setPokemonName] = useState("");
-  const [pokemonHealth, setPokemonHealth] = useState(30);
-  const [isPokemonA, setIsPokemonA] = useState(true);
-  const [pokemonImageFrontUrl, setPokemonImageFrontUrl] = useState("");
-  const [pokemonImageBackUrl, setPokemonImageBackUrl] = useState("");
+const PokemonContextProvider: React.FC<PokemonProps> = ({ children }: any) => {
+  const [pokemonA, setPokemonA] = useState({
+    name: "",
+    id: "",
+    stat: 0,
+    images: {
+      front: "",
+      back: "",
+    },
+    moves: [],
+  });
+  const [pokemonB, setPokemonB] = useState({
+    name: "",
+    id: "",
+    stat: 0,
+    images: {
+      front: "",
+      back: "",
+    },
+    moves: [
+      {
+        move: {
+          name: "",
+          url: "",
+        },
+      },
+    ],
+  });
 
-  const pokemonHealthDamage = (damage: number) => {
-    setPokemonHealth(pokemonHealth - damage);
-  };
+  const { getOnePokemonData, getPokemonAttackDamage } = useAPI();
 
-  const setPokemonData = (
-    pokemonName: string,
-    pokemonHealth: number,
-    isPokemonA: boolean,
-    pokemonImageFrontUrl: string,
-    pokemonImageBackUrl: string
-  ) => {
-    setPokemonName(pokemonName);
-    setPokemonHealth(pokemonHealth);
-    setIsPokemonA(isPokemonA);
-    setPokemonImageFrontUrl(pokemonImageFrontUrl);
-    setPokemonImageBackUrl(pokemonImageBackUrl);
-  };
+  useEffect(() => {
+    const randomIdA = Math.floor(Math.random() * 150 + 1).toString();
+    const randomIdB = Math.floor(Math.random() * 150 + 1).toString();
+    getOnePokemonData(randomIdA).then((pokemon) => setPokemonA(pokemon));
+    getOnePokemonData(randomIdB).then((pokemon) => setPokemonB(pokemon));
+    console.log("starting HP - no damage:", pokemonA.stat);
+
+    const url = "https://pokeapi.co/api/v2/move/3/";
+
+    getPokemonAttackDamage(url).then((value: any) =>
+      setPokemonA({ ...pokemonA, stat: pokemonA.stat - value })
+    );
+    console.log("damaged pokemon:", pokemonA);
+  }, []);
+
+  console.log("damaged pokemon 2:", pokemonA);
 
   return (
-    <PokemonContext.Provider
-      value={{
-        pokemonName,
-        pokemonHealth,
-        isPokemonA,
-        pokemonImageFrontUrl,
-        pokemonImageBackUrl,
-        pokemonHealthDamage,
-        setPokemonData,
-      }}
-    >
+    <PokemonContext.Provider value={{ pokemonA, pokemonB }}>
       {children}
     </PokemonContext.Provider>
   );
