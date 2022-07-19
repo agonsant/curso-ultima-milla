@@ -1,10 +1,13 @@
+import { useParams } from "react-router";
 import "./RankingPage.scss";
 
 const RankingPage = () => {
+  const params = useParams();
+
   return (
     <>
       <div className="ranking-page">
-        <h2>Ranking Page</h2>
+        <h2>The winner is {params.name?.toUpperCase()}. </h2>
       </div>
     </>
   );
