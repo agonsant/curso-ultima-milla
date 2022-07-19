@@ -13,8 +13,6 @@ const ArenaPage = () => {
   return (
     <>
       <div className="arena-page">
-        <h2>Arena Page</h2>
-
         {isLoading && <Loading />}
         {userRandomPokemon && computerRandomPokemon && (
           <div>
@@ -23,12 +21,14 @@ const ArenaPage = () => {
                 {
                   <PlayerStatus
                     pokemon={userRandomPokemon}
+                    opponent={computerRandomPokemon}
                     isComputer={false}
                   />
                 }
                 {
                   <PlayerStatus
                     pokemon={computerRandomPokemon}
+                    opponent={userRandomPokemon} 
                     isComputer={true}
                   />
                 }

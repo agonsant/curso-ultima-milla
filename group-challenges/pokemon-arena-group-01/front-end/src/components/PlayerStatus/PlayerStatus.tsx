@@ -1,16 +1,47 @@
+import { useState } from "react";
+import { useNavigate } from "react-router";
+
 import { RandomPokemon } from "../../models/randomPokemon-model";
-import MenuMoves from "../MenuMoves/MenuMoves";
+import { PokemonMove } from "../../models/randomPokemon-model";
 import "./PlayerStatus.scss";
 
 interface IPlayerStatusProps {
   pokemon: RandomPokemon;
+  opponent: RandomPokemon;
   isComputer: boolean;
 }
 
 const PlayerStatus: React.FC<IPlayerStatusProps> = ({
   pokemon,
+  opponent,
   isComputer,
 }) => {
+
+  const navigate = useNavigate();
+
+  const maxOpponentHealth = opponent?.stats;
+  const [opponentHealth, setOpponentHealth] = useState(maxOpponentHealth);
+  const attacks = pokemon?.moves;
+  const healthBar = document.getElementById('health') as HTMLDivElement;
+
+  const chooseAttack = () => {
+    if (typeof maxOpponentHealth !== 'undefined' && typeof opponentHealth !== "undefined" && healthBar !== null) {
+      const newOpponentHealth = opponentHealth/2; 
+      const newHealthPercentage = (newOpponentHealth/ maxOpponentHealth) *100;
+      setOpponentHealth(newOpponentHealth);
+      healthBar.style.width=`${newHealthPercentage}%`;
+      console.log(newOpponentHealth);
+      console.log(newHealthPercentage);
+      if ( newHealthPercentage < 1) {
+        console.log("You won");
+      }
+    }
+  };
+
+  const runAway = () => {
+    navigate("/");
+  };
+
   return (
     <div className="pokemon">
       {pokemon && (
@@ -19,20 +50,38 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
             <p className="statistics__pokemon-name">
               {pokemon.name.toUpperCase()}{" "}
             </p>
-            <p className="statistics__pokemon-level"> Hp: {pokemon.stats} </p>
-            <progress id="health" value="100" max="100">
-              {" "}
-            </progress>
+            <p className="statistics__pokemon-maxHealth"> Max health: {pokemon.stats} </p>
+            <div id="health">
+              <div id="health-bar"></div>
+            </div>
           </div>
           <div className="pokemon__img">
             {isComputer && (
-              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              <img src={pokemon.sprites.front_default} alt={pokemon.name} width={250} height={250}/>
             )}
             {!isComputer && (
-              <img src={pokemon.sprites.back_default} alt={pokemon.name} />
+              <img src={pokemon.sprites.back_default} alt={pokemon.name} width={250} height={250} />
             )}
           </div>
-          {<MenuMoves pokemon={pokemon} />}
+          <div className="menu-moves">
+            <div className="menu-moves__left">
+              <p>What should #{pokemon.name} do?</p>
+            </div>
+            <div className="menu-moves__right">
+              <ul className="menu-moves_attacks-list">
+                {attacks?.map((move: PokemonMove, index: number) => (
+                  <li key={index} className="btn menu-moves__item">
+                    <button className="btn" onClick={chooseAttack}>
+                      {move.name}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <button className="btn btn--run" onClick={runAway}>
+                RUN
+              </button>
+            </div>
+          </div>
         </>
       )}
     </div>

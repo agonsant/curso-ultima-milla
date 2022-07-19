@@ -8,8 +8,57 @@
   &__info {
     width: 300px;
     height: 65px;  
+    margin: 5px;
     color:black;
+    display: flex;
+    flex-direction: column;
     background-color: blanchedalmond;
   }
 }
 
+.menu-moves {
+  width: 300px;  
+  height: 100%;  
+  display: flex;
+  border: 1px solid black;
+
+  &__left {
+    width: 98px; 
+    background-color: white;
+  }  
+
+  &__attacks-list {
+    width: 202px;
+    height: 65%;
+    display: flex;    
+    flex-wrap: wrap;
+  }  
+
+  &__item {
+    display:inline;  
+  }
+}
+
+.btn {
+  width: 95px;
+  height: 30px;
+  border-radius: 13px;
+  text-align: center;
+  cursor: pointer;  
+
+  &--run {
+    background-color: rosybrown;
+    justify-content: center;
+    margin-top: 5px;
+    align-self: center;
+  }
+}
+
+#health {
+  width: 150px;
+  height: 20px;
+  background-color: aqua;
+  border-radius: 13px;
+  align-self: flex-end;  
+  margin-right: 3px;
+}
