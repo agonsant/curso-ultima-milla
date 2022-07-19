@@ -2,22 +2,15 @@ import styled from "styled-components";
 
 interface IHealthBarProps {
   currentValue: number;
-  maxValue: number;
-  minValue: number;
   isEmpty: boolean;
 }
 
-const HealthBar: React.FC<IHealthBarProps> = ({
-  currentValue,
-  maxValue,
-  minValue,
-  isEmpty,
-}) => {
+const HealthBar: React.FC<IHealthBarProps> = ({ currentValue, isEmpty }) => {
   return (
     <>
       <ContainerStyles>
         <FillerStyles>
-        <LabelStyles>{`${currentValue} / ${maxValue}`}</LabelStyles>
+          <LabelStyles>{`${currentValue}`}</LabelStyles>
         </FillerStyles>
       </ContainerStyles>
     </>

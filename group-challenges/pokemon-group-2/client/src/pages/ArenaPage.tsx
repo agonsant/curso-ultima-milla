@@ -5,15 +5,15 @@ import PokemonContext from "../store/contexts/pokemonContext/pokemonContext";
 import PokemonCardArena from "../components/PokemonCardArena";
 
 const ArenaPage = () => {
-  const values = useContext(ThemeContext);
-  const { pokemonA, pokemonB } = useContext(PokemonContext);
+  const themeValues = useContext(ThemeContext);
+  const { pokemonA, pokemonB, pokemonAttack } = useContext(PokemonContext);
 
   return (
     <>
       <h1>Hello world - Arena Page</h1>
       <StyledPageWrapper
         className={`arena-page__background--${
-          values.isDarkMode ? "night" : "light"
+          themeValues.isDarkMode ? "night" : "light"
         }`}
       >
         <section className="arena-page__stadium--player--a">
@@ -33,7 +33,15 @@ const ArenaPage = () => {
           <ul>
             {pokemonB.moves.map(
               (movement, index: any): JSX.Element => (
-                <li key={index} className="arena-page__menu-attacks__item">
+                <li
+                  key={index}
+                  className="arena-page__menu-attacks__item"
+                  onClick={() =>
+                    pokemonAttack(
+                      `https://pokeapi.co/api/v2/move/${index + 1}/`
+                    )
+                  }
+                >
                   {movement.move.name}
                 </li>
               )
