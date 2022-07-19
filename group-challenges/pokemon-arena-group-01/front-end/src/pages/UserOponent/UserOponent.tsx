@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import {useContext } from "react";
 import { useNavigate } from "react-router";
 
 import { ThemeContext } from "../../store/context/ThemeContext";
@@ -59,7 +59,7 @@ const UserOponent: React.FC = (): JSX.Element => {
         onClick={playGame}
         className="user-oponent-page__button"
       >
-        Lets Figth!
+        Lets Fight!
       </button>
     </div>
   );
