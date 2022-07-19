@@ -12,17 +12,17 @@ const useAPI = () => {
       name: pokemonData.name,
       id: pokemonData.id,
       stat: pokemonData.stats[0].base_stat,
-      images:{
+      images: {
         front: pokemonData.sprites.other.dream_world.front_default,
-        back: pokemonData.sprites.back_default
+        back: pokemonData.sprites.back_default,
       },
-      moves: pokemonData.moves.slice(0,4),
+      moves: pokemonData.moves.slice(0, 4),
     };
     return pokeObject;
   };
 
   return {
-    getOnePokemonData
+    getOnePokemonData,
   };
 };
 

@@ -4,8 +4,6 @@ import { IPokemon } from "../../../types/pokemon.model";
 interface IPokemonContext {
   pokemonA: IPokemon;
   pokemonB: IPokemon;
-
-  //setPokemonData: () => void
 }
 
 const PokemonContext = createContext<IPokemonContext>({
@@ -15,9 +13,9 @@ const PokemonContext = createContext<IPokemonContext>({
     stat: 0,
     images: {
       front: "",
-      back: ""
+      back: "",
     },
-    moves: []
+    moves: [],
   },
   pokemonB: {
     name: "",
@@ -25,12 +23,10 @@ const PokemonContext = createContext<IPokemonContext>({
     stat: 0,
     images: {
       front: "",
-      back: ""
+      back: "",
     },
-    moves: []
-  }
-  
-  // setPokemonData: () => {},
+    moves: [],
+  },
 });
 
 PokemonContext.displayName = "Pokemon Context";

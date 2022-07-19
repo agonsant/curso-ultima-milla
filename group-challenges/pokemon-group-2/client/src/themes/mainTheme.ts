@@ -5,7 +5,7 @@ export const light = {
   secondary: "#00F8FF",
   text: "#120D26",
   lightText: "#9E9E9E",
-  background: "#fff",
+  background: "#e5e5e5",
 };
 
 export const dark = {
@@ -13,7 +13,7 @@ export const dark = {
   secondary: "#00F8FF",
   text: "#120D26",
   lightText: "#9E9E9E",
-  background: "#000",
+  background: "#353232",
 };
 
 let theme = light;
