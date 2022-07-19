@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Battery Status</title>
+    <style>
+      body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .battery-info {
+        width: 240px;
+        height: 320px;
+        align-self: center;
+        border: 1px solid black;
+        border-radius: 20px;
+      }
+
+      .battery-info__image {
+        position:relative;
+        height: 60%;
+        background-color: green;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+      }
+
+      .battery-info__icon {
+        position:absolute;
+        right:0;
+        bottom:0;
+      }
+
+      .battery-info__details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .level {
+        font-size: 20px;
+      }
+
+      .message {
+        color: gray;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .green {
+        background-color: #32de84;
+      }
+
+      .battery-charging{
+        margin-top: 100px;
+        width: 350px;
+        height: 50px;
+        align-self: center;
+        border: 1px solid black;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background-color: white;
+      }
+      .battery-charging__progress {
+        height: 50px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background-color: #32de84;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Battery Charger Application</h1>
+    <div class="battery">
+     <!-- battery level info --> 
+      <section class="battery-info">
+        <div class="battery-info__image">
+          <!-- <img class="battery-info__icon" src="https://i.imgur.com/xy0IMAM.png" width=50 height=50 /> -->
+        </div>
+        <div class="battery-info__details">
+          <p class="level"></p>
+          <p class="message"></p>
+        </div>
+      </section>
+      <!-- charging bar --> 
+      <section class="battery-charging">
+        <div class="battery-charging__progress"></div>
+      </section>
+    </div>
+  <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
