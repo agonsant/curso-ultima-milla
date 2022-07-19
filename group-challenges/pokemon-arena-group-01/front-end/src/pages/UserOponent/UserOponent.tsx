@@ -20,8 +20,6 @@ const UserOponent: React.FC = (): JSX.Element => {
     RandomPokemonsContext
   );
 
-  console.log("userPokemon", userRandomPokemon);
-  console.log("computerPokemon", computerRandomPokemon);
   const playGame = () => {
     navigate("/arena");
   };

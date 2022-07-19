@@ -25,9 +25,6 @@ const RandomPokemonsContextProvider = ({ children }: any) => {
     );
   }, []);
 
-  console.log("provider userRandomPokemon", userRandomPokemon);
-  console.log("provider computerRandomPokemon", computerRandomPokemon);
-  console.log("provider isLoading", isLoading);
 
   return (
     <RandomPokemonsContext.Provider
