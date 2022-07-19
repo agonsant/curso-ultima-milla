@@ -13,7 +13,7 @@ export type PokemonMove = {
     power: number,
     priority: number,
     typeName: string,
-    damage_relations: PokemonDamageRelations,
+    // damage_relations: PokemonDamageRelations,
 };
 
 export type PokemonSprites = {

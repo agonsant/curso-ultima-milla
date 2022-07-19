@@ -14,34 +14,32 @@
     flex-direction: column;
     background-color: blanchedalmond;
   }
-}
 
-.menu-moves {
-  width: 300px;  
-  height: 100%;  
-  display: flex;
-  border: 1px solid black;
+  &__moves {
+    width: 400px;  
+    height: fit-content;  
+    display: flex;
+    border: 1px solid black;
+  
+    &__attacks-list {
+      width: 290px;
+      height: 75%;
+      display: flex;    
+      flex-wrap: wrap;
 
-  &__left {
-    width: 98px; 
-    background-color: white;
-  }  
-
-  &__attacks-list {
-    width: 202px;
-    height: 65%;
-    display: flex;    
-    flex-wrap: wrap;
-  }  
-
-  &__item {
-    display:inline;  
+      &__item {
+        display:inline;  
+      }
+        
+    }  
   }
 }
 
+
+
 .btn {
-  width: 95px;
-  height: 30px;
+  width: 140px;
+  height: 50px;
   border-radius: 13px;
   text-align: center;
   cursor: pointer;  

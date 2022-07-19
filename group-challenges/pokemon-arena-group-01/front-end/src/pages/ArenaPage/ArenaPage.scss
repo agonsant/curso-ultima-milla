@@ -3,13 +3,16 @@
   width: 97%;
   height: auto;
 }
+
 .arena {
-  width: 65vw;
+  width: 95vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-self: center;
-  margin: 30px;
+  background-image: url('../../../public/background-arena.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &__players {
     display: flex;
