@@ -1,8 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
-import { useContext } from "react";
-import PokemonContext from "../store/contexts/pokemonContext/pokemonContext";
-
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 
 const useAPI = () => {
@@ -27,11 +23,10 @@ const useAPI = () => {
   };
 
   const getPokemonAttackDamage = async (url: string) => {
-    const response = await fetch(`${url}`);
+    const response = await fetch(url);
     const attack = await response.json();
-    const powerDamage = attack.power;
-    console.log("powerDamage", powerDamage);
-    return powerDamage;
+    const attackDamage = attack.power;
+    return attackDamage;
   };
 
   return {

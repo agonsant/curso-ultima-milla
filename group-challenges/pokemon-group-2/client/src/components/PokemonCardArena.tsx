@@ -7,17 +7,20 @@ interface IPokemonCardProps {
   isPokemonA: boolean;
 }
 
-const PokemonCardArena: React.FC<IPokemonCardProps> = ({pokemon, isPokemonA}) => {
+const PokemonCardArena: React.FC<IPokemonCardProps> = ({
+  pokemon,
+  isPokemonA,
+}) => {
+  console.log("pokemon", pokemon);
+
   return (
     <>
       <CardContainer>
-        <HealthBar currentValue={pokemon.stat} maxValue={pokemon.stat} minValue={0} isEmpty={false}></HealthBar>
+        <HealthBar currentValue={pokemon.stat} isEmpty={false}></HealthBar>
         <h2>{pokemon.name}</h2>
         <PokeImage
           alt={pokemon.name}
-          src={
-            isPokemonA ? pokemon.images.front : pokemon.images.back
-          }
+          src={isPokemonA ? pokemon.images.front : pokemon.images.back}
         />
       </CardContainer>
     </>
@@ -36,4 +39,4 @@ const CardContainer = styled.div`
 const PokeImage = styled.img`
   width: 220px;
   margin: 10px 30px 30px 30px;
-`
+`;

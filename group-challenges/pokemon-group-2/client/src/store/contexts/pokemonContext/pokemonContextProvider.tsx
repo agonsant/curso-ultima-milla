@@ -8,6 +8,8 @@ type PokemonProps = {
 };
 
 const PokemonContextProvider: React.FC<PokemonProps> = ({ children }: any) => {
+  const { getOnePokemonData, getPokemonAttackDamage } = useAPI();
+
   const [pokemonA, setPokemonA] = useState({
     name: "",
     id: "",
@@ -36,27 +38,20 @@ const PokemonContextProvider: React.FC<PokemonProps> = ({ children }: any) => {
     ],
   });
 
-  const { getOnePokemonData, getPokemonAttackDamage } = useAPI();
+  const pokemonAttack = async (url: string) => {
+    const damageValue = await getPokemonAttackDamage(url);
+    setPokemonA({ ...pokemonA, stat: pokemonA.stat - damageValue });
+  };
 
   useEffect(() => {
-    const randomIdA = Math.floor(Math.random() * 150 + 1).toString();
-    const randomIdB = Math.floor(Math.random() * 150 + 1).toString();
+    const randomIdA = Math.floor(Math.random() * 600 + 1).toString();
+    const randomIdB = Math.floor(Math.random() * 600 + 1).toString();
     getOnePokemonData(randomIdA).then((pokemon) => setPokemonA(pokemon));
     getOnePokemonData(randomIdB).then((pokemon) => setPokemonB(pokemon));
-    console.log("starting HP - no damage:", pokemonA.stat);
-
-    const url = "https://pokeapi.co/api/v2/move/3/";
-
-    getPokemonAttackDamage(url).then((value: any) =>
-      setPokemonA({ ...pokemonA, stat: pokemonA.stat - value })
-    );
-    console.log("damaged pokemon:", pokemonA);
   }, []);
 
-  console.log("damaged pokemon 2:", pokemonA);
-
   return (
-    <PokemonContext.Provider value={{ pokemonA, pokemonB }}>
+    <PokemonContext.Provider value={{ pokemonA, pokemonB, pokemonAttack }}>
       {children}
     </PokemonContext.Provider>
   );
