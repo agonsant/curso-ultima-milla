@@ -24,9 +24,12 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
   const attacks = pokemon?.moves;
   const healthBar = document.getElementById('health') as HTMLDivElement;
 
-  const chooseAttack = () => {
+  const chooseAttack = (e:any) => {
     if (typeof maxOpponentHealth !== 'undefined' && typeof opponentHealth !== "undefined" && healthBar !== null) {
-      const newOpponentHealth = opponentHealth/2; 
+      const powerAttack = e.target.innerHTML.split(',')[1];
+      // const priority = e.target.innerHTML.split(',')[2];
+
+      const newOpponentHealth = opponentHealth - powerAttack; 
       const newHealthPercentage = (newOpponentHealth/ maxOpponentHealth) *100;
       setOpponentHealth(newOpponentHealth);
       healthBar.style.width=`${newHealthPercentage}%`;
@@ -63,16 +66,14 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
               <img src={pokemon.sprites.back_default} alt={pokemon.name} width={250} height={250} />
             )}
           </div>
-          <div className="menu-moves">
-            <div className="menu-moves__left">
-              <p>What should #{pokemon.name} do?</p>
-            </div>
-            <div className="menu-moves__right">
-              <ul className="menu-moves_attacks-list">
+          <div className="pokemon__moves">
+            <div className="pokemon__right">
+              <ul className="pokemon__attacks-list">
                 {attacks?.map((move: PokemonMove, index: number) => (
-                  <li key={index} className="btn menu-moves__item">
-                    <button className="btn" onClick={chooseAttack}>
-                      {move.name}
+                  <li key={index} className="btn pokemon__item">
+                    <button className="btn" onClick={ e => chooseAttack(e)}>
+                      {move.name}, 
+                      {move.power} 
                     </button>
                   </li>
                 ))}
