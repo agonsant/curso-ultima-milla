@@ -33,7 +33,7 @@ const HomePage: React.FC<HomePageProps> = () => {
   return (
     <>
       <Wrapper>
-        <h1>Pokémon</h1>
+        <Heading>Pokémon</Heading>
         <StartOptions actionOnSubmit={onFormSubmit}></StartOptions>
       </Wrapper>
     </>
@@ -52,3 +52,13 @@ const Wrapper = styled.section`
   flex-direction: column;
   padding: 0 1rem;
 `;
+
+const Heading = styled.h1`
+  font-size: 42px;
+  margin-top: 5px;
+  display: inline;
+  color: #ccd5ae;
+  letter-spacing: 3px;
+  text-shadow: 0 0 2px black, 0 0 12px #d4a373;
+  vertical-align: super;
+`
