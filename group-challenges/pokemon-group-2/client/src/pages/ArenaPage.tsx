@@ -6,38 +6,57 @@ import PokemonCardArena from "../components/PokemonCardArena";
 import AttackBox from "../components/AttackBox";
 
 const ArenaPage = () => {
-  const themeValues = useContext(ThemeContext);
+  // const themeValues = useContext(ThemeContext);
   const { pokemonA, pokemonB } = useContext(PokemonContext);
+  const { isDarkMode } = useContext(ThemeContext);
 
   return (
     <>
-      <Heading>Pokemon Arena</Heading>
-      <StyledPageWrapper
-        className={`arena-page__background--${
-          themeValues.isDarkMode ? "night" : "light"
-        }`}
-      >
-        <TwoCardsContainer>
-          <section className="arena-page__stadium--player--b">
-            <PokemonCardArena
-              pokemon={pokemonB}
-              isPokemonA={false}
-              ></PokemonCardArena>
-          </section>
-          <section className="arena-page__stadium--player--a">
-            <PokemonCardArena
-              pokemon={pokemonA}
-              isPokemonA={true}
-              ></PokemonCardArena>
-          </section>
-        </TwoCardsContainer>
-        <AttackBox></AttackBox>
-      </StyledPageWrapper>
+      <MainContainerPage className={`arena-page__background--${
+          isDarkMode ? "night" : "light"
+        }`}>
+        <Heading>Pokemon Arena</Heading>
+        <StyledPageWrapper
+          className={`arena-page__background--${
+            isDarkMode ? "night" : "light"
+          }`}
+        >
+          <TwoCardsContainer>
+            <section className="arena-page__stadium--player--b">
+              <PokemonCardArena
+                pokemon={pokemonB}
+                isPokemonA={false}
+                ></PokemonCardArena>
+            </section>
+            <section className="arena-page__stadium--player--a">
+              <PokemonCardArena
+                pokemon={pokemonA}
+                isPokemonA={true}
+                ></PokemonCardArena>
+            </section>
+          </TwoCardsContainer>
+          <AttackBox></AttackBox>
+        </StyledPageWrapper>
+      </MainContainerPage>
     </>
   );
 };
 
 export default ArenaPage;
+
+const MainContainerPage = styled.div`
+  .arena-page__background--night {
+    background-color: #353232;
+    min-width: 100vw;
+    min-height: 100vh;
+  }
+
+  .arena-page__background--light {
+    background-color: #e5e5e5;
+    min-width: 100vw;
+    min-height: 100vh;
+  }
+`
 
 const Heading = styled.h1`
   font-size: 42px;
@@ -50,7 +69,7 @@ const Heading = styled.h1`
 const StyledPageWrapper = styled.section`
   margin: 0 auto;
 
-  .arena-page__background--night {
+  /* .arena-page__background--night {
     background-color: #353232;
     min-width: 100vw;
     height: auto;
@@ -60,7 +79,7 @@ const StyledPageWrapper = styled.section`
     background-color: #e5e5e5;
     min-width: 100vw;
     min-height: 100vh;
-  }
+  } */
   .arena-page__stadium--player {
     display: flex;
     &-- {
