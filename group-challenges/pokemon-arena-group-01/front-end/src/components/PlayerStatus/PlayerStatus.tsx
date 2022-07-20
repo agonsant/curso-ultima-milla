@@ -22,22 +22,27 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
   const maxOpponentHealth = opponent?.stats;
   const [opponentHealth, setOpponentHealth] = useState(maxOpponentHealth);
 
-  const chooseAttack = (move:PokemonMove, pokemon:RandomPokemon) => () => {
-    const attackInfo = {
-      name: pokemon?.name,
-      priority: move.priority,
-      power: move.power,
-    };
-  
+  const chooseAttack = (move:PokemonMove, pokemon:RandomPokemon, isComputer: boolean) => () => {
+    console.log("is computer: " + isComputer);
+    const powerAttack = move.power;
     if (typeof maxOpponentHealth !== 'undefined' && typeof opponentHealth !== "undefined" ) {
-      const powerAttack = move.power;
-
+      // update the opponent's health after attack
       const newOpponentHealth = opponentHealth - powerAttack; 
       setOpponentHealth(newOpponentHealth);
+
+      // print the opponent's health bar
       const newHealthPercentage = Math.round((newOpponentHealth/ maxOpponentHealth) * 100);
-      const healthBar = document.querySelector('.opponent-health') as HTMLDivElement;
-      healthBar.style.width=`${newHealthPercentage}%`;
-      healthBar.innerHTML=`${newHealthPercentage}%`;
+      const computerHealthBar = document.querySelector('.computer') as HTMLDivElement;
+      const userHealthBar = document.querySelector('.user') as HTMLDivElement;
+      if (isComputer) {
+        userHealthBar.style.width=`${newHealthPercentage}%`;
+        userHealthBar.innerHTML=`${newOpponentHealth}/${maxOpponentHealth}`;
+      } else {
+        computerHealthBar.style.width=`${newHealthPercentage}%`;
+        computerHealthBar.innerHTML=`${newOpponentHealth}/${maxOpponentHealth}`;
+      }
+      
+      
 
       console.log(newOpponentHealth);
       console.log(newHealthPercentage);
@@ -58,7 +63,13 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
               {pokemon.name.toUpperCase()}{" "}
             </p>
             <p className="pokemon__maxHealth"> Max health: {pokemon.stats} </p>
-            <div className="opponent-health"> </div>
+            <div className="health-bar">
+              {isComputer 
+                ? (<div className="own-health computer"> {pokemon.stats} </div>) 
+                : (<div className="own-health user"> {pokemon.stats} </div>)
+              }
+              <div className="opponent-health" >  </div>
+            </div>
           </div>
           <div className="pokemon__img">
             {isComputer && (
@@ -73,7 +84,7 @@ const PlayerStatus: React.FC<IPlayerStatusProps> = ({
               <ul className="pokemon__attacks-list">
                 {attacks?.map((move: PokemonMove, index: number) => (
                   <li key={index} className="pokemon__item">
-                    <button className="btn" onClick={chooseAttack(move, pokemon)}>
+                    <button className="btn" onClick={chooseAttack(move, pokemon, isComputer)}>
                       <p> Name: {move.name} </p> 
                       <p> Power: {move.power} </p> 
                       <p> Priority: {move.priority} </p> 

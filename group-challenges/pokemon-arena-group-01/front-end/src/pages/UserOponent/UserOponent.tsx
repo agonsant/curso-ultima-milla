@@ -59,7 +59,7 @@ const UserOponent: React.FC = (): JSX.Element => {
         onClick={playGame}
         className="user-oponent-page__button"
       >
-        Lets Fight!
+        Let's Fight!
       </button>
     </div>
   );
