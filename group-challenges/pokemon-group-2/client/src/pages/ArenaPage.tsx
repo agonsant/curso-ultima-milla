@@ -3,10 +3,11 @@ import ThemeContext from "../store/contexts/themeContext/themeContext";
 import { useContext } from "react";
 import PokemonContext from "../store/contexts/pokemonContext/pokemonContext";
 import PokemonCardArena from "../components/PokemonCardArena";
+import AttackBox from "../components/AttackBox";
 
 const ArenaPage = () => {
   const themeValues = useContext(ThemeContext);
-  const { pokemonA, pokemonB, pokemonAttack } = useContext(PokemonContext);
+  const { pokemonA, pokemonB } = useContext(PokemonContext);
 
   return (
     <>
@@ -30,26 +31,7 @@ const ArenaPage = () => {
               ></PokemonCardArena>
           </section>
         </TwoCardsContainer>
-        <div>
-          <p>Attacks:</p>
-          <ul>
-            {pokemonB.moves.map(
-              (movement, index: any): JSX.Element => (
-                <li
-                key={index}
-                className="arena-page__menu-attacks__item"
-                onClick={() =>
-                  pokemonAttack(
-                    `https://pokeapi.co/api/v2/move/${index + 1}/`
-                    )
-                  }
-                  >
-                  {movement.move.name}
-                </li>
-              )
-              )}
-          </ul>
-        </div>
+        <AttackBox></AttackBox>
       </StyledPageWrapper>
     </>
   );
@@ -87,12 +69,6 @@ const StyledPageWrapper = styled.section`
     &--b {
       // background-color: green;
     }
-  }
-  .arena-page__menu-attacks__item {
-    width: 300px;
-    height: 100%;
-    display: flex;
-    border: 1px solid black;
   }
 `;
 
