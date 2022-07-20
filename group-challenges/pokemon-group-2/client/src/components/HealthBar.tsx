@@ -1,30 +1,49 @@
 import styled from "styled-components";
 
 interface IHealthBarProps {
+  pokemonName: string;
   currentValue: number;
   isEmpty: boolean;
 }
 
-const HealthBar: React.FC<IHealthBarProps> = ({ currentValue, isEmpty }) => {
+const HealthBar: React.FC<IHealthBarProps> = ({ pokemonName, currentValue, isEmpty }) => {
   return (
     <>
-      <ContainerStyles>
-        <FillerStyles>
-          <LabelStyles>{`${currentValue}`}</LabelStyles>
-        </FillerStyles>
-      </ContainerStyles>
+      <MainContainer>
+        <SpanPokeName>{`${pokemonName.toUpperCase()}`}</SpanPokeName>
+        <ContainerStyles>
+          <FillerStyles>
+            <LabelStyles>{`${currentValue}`}</LabelStyles>
+          </FillerStyles>
+        </ContainerStyles>
+      </MainContainer>
     </>
   );
 };
 
 export default HealthBar;
 
+const MainContainer = styled.div`
+  border: 5px double #283618;
+  border-radius: 30px 0 30px 0;
+  font-weight: 700;
+  font-size: 20px;
+  color: #283618; 
+  background-color: #e9edc9;
+`
+
+const SpanPokeName = styled.p `
+  text-align: center;
+`
+
 const ContainerStyles = styled.div`
-  height: 20px;
+  height: 25px;
   width: 300px;
   background-color: #e0e0de;
   border-radius: 50px;
-  margin: 50px;
+  margin: 10px 50px;
+  display: flex;;
+  flex-direction: column;
 `;
 
 const FillerStyles = styled.div`
