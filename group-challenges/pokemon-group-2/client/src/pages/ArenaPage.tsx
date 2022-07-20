@@ -10,44 +10,46 @@ const ArenaPage = () => {
 
   return (
     <>
-      <h1>Hello world - Arena Page</h1>
+      <h1>Pokemon Arena</h1>
       <StyledPageWrapper
         className={`arena-page__background--${
           themeValues.isDarkMode ? "night" : "light"
         }`}
       >
-        <section className="arena-page__stadium--player--a">
-          <PokemonCardArena
-            pokemon={pokemonA}
-            isPokemonA={true}
-          ></PokemonCardArena>
-        </section>
-
-        <section className="arena-page__stadium--player--b">
-          <PokemonCardArena
-            pokemon={pokemonB}
-            isPokemonA={false}
-          ></PokemonCardArena>
-
+        <TwoCardsContainer>
+          <section className="arena-page__stadium--player--a">
+            <PokemonCardArena
+              pokemon={pokemonA}
+              isPokemonA={true}
+              ></PokemonCardArena>
+          </section>
+          <section className="arena-page__stadium--player--b">
+            <PokemonCardArena
+              pokemon={pokemonB}
+              isPokemonA={false}
+              ></PokemonCardArena>
+          </section>
+        </TwoCardsContainer>
+        <div>
           <p>Attacks:</p>
           <ul>
             {pokemonB.moves.map(
               (movement, index: any): JSX.Element => (
                 <li
-                  key={index}
-                  className="arena-page__menu-attacks__item"
-                  onClick={() =>
-                    pokemonAttack(
-                      `https://pokeapi.co/api/v2/move/${index + 1}/`
+                key={index}
+                className="arena-page__menu-attacks__item"
+                onClick={() =>
+                  pokemonAttack(
+                    `https://pokeapi.co/api/v2/move/${index + 1}/`
                     )
                   }
-                >
+                  >
                   {movement.move.name}
                 </li>
               )
-            )}
+              )}
           </ul>
-        </section>
+        </div>
       </StyledPageWrapper>
     </>
   );
@@ -82,3 +84,7 @@ const StyledPageWrapper = styled.section`
     border: 1px solid black;
   }
 `;
+
+const TwoCardsContainer = styled.div`
+  display: flex;
+`

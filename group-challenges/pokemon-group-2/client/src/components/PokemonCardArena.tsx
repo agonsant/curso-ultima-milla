@@ -16,7 +16,7 @@ const PokemonCardArena: React.FC<IPokemonCardProps> = ({
   return (
     <>
       <CardContainer>
-        <HealthBar currentValue={pokemon.stat} isEmpty={false}></HealthBar>
+        <HealthBar pokemonName={pokemon.name} currentValue={pokemon.stat} isEmpty={false}></HealthBar>
         <h2>{pokemon.name}</h2>
         <PokeImage
           alt={pokemon.name}
