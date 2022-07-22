@@ -1,7 +1,8 @@
 import randomMovesId from './randomMovesId';
 import randomMoves from './randomMoves';
+import { RandomPokemon } from '../models/randomPokemon-model';
 
-const getOneRandomPokemon = async () => {
+const getOneRandomPokemon = async (): Promise<RandomPokemon> => {
     const randomPokemon = Math.floor(Math.random() * (900 - 1) + 1); // Allow us to select a random number, from 1 to 900
                                                                       // (max of Pokemons existents, for now).
 
