@@ -1,15 +1,19 @@
 @import "../../styles/variables";
 
 .main-footer-container{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $main-color;
-  width: 100%;
-  height: 50px;
 }
 
-.footer-text{
+.footer-text {
+  text-align: center;
   color:$text-color;
   font-size: large;
+  margin-left: 10px;
 }

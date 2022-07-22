@@ -15,6 +15,7 @@ const randomMoves = async (arrayIds: Array<number>) => {
                 typeName: response.type.name,
                 damage_relations: await getDamageRelations(response.type.name),
             };
+
             randomMoves.push(move);
         } catch (error) {
             throw new Error('There are not moves');

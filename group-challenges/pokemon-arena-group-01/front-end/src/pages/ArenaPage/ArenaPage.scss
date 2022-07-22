@@ -1,17 +1,23 @@
-.arena-page{
+.arena-page {
   margin: 20px;
   width: 97%;
   height: auto;
 }
+
 .arena {
-  width: 60vw;
+  width: 95vw;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-self: center;
-  margin: 30px;
+  background-image: url('../../../public/background-arena.jpeg');
+  opacity: .6; 
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &__players {
     display: flex;
+    border: 1px solid black;
   }
 }
