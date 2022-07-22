@@ -13,9 +13,8 @@ const randomMoves = async (arrayIds: Array<number>) => {
                 power: response.power === null ? 0 : response.power, // power could be null, in this case it's replaced by 0
                 priority: response.priority,
                 typeName: response.type.name,
-                damage_relations: await getDamageRelations(response.id),
-            }
-            console.log('move', move)
+                damage_relations: await getDamageRelations(response.type.name),
+            };
             randomMoves.push(move);
         } catch (error) {
             throw new Error('There are not moves');
